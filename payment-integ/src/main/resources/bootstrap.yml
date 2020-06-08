@@ -1,0 +1,8 @@
+server:
+  port : 11008
+spring:
+  application:
+    name: payment-integ
+  cloud:
+    config:
+      uri: http://localhost:8888

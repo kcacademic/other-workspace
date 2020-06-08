@@ -1,0 +1,482 @@
+2019-10-11 15:35:36.096 main FILESTART> CYBERSOURCE LOG FILE
+
+2019-10-11 15:35:36.100 main TRANSTART> =======================================
+2019-10-11 15:35:36.101 main MERCHCFG > merchantID=< ---merchant_id ---->, keysDirectory=keys, keyAlias=<--- key alias name for P12 key --->, keyPassword=<--- P12 key password --->, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-10-11 15:35:36.167 main REQUEST  > UUID   >  81f7fea1-cd35-4ed2-b1e3-821068606aca
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=jsmixxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=MRC-14344
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=xxxxx
+billTo_street1=1295xxxxxxxxxxxxRoad
+billTo_postalCode=94043
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxx
+billTo_state=CA
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=&lt; ---merchant_id ----&gt;
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-10-11 15:35:36.176 main INFO     > Client, End of soapWrap   126ms
+2019-10-11 15:35:36.964 main INFO     > Loading the certificate from p12 file 
+2019-10-11 15:35:37.035 main EXCEPTION> Exception while loading KeyStore, 'null'
+2019-10-11 15:35:37.039 main EXCEPTION> 
+ClientException details:
+innerException: 
+com.cybersource.ws.client.ConfigException: The file "C:\Users\kumchand0\Apps\sts-workspace\Other Projects\payment-integ\keys\< ---merchant_id ---->.p12" is missing or is not a file.
+	at com.cybersource.ws.client.MerchantConfig.getKeyFile(MerchantConfig.java:361)
+	at com.cybersource.ws.client.SecurityUtil.readAndStoreCertificateAndPrivateKey(SecurityUtil.java:130)
+	at com.cybersource.ws.client.SecurityUtil.loadMerchantP12File(SecurityUtil.java:106)
+	at com.cybersource.ws.client.Client.soapWrapAndSign(Client.java:237)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:123)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.cybersource.CybersourceIntegration.main(CybersourceIntegration.java:55)
+
+
+2019-10-11 15:36:11.975 main TRANSTART> =======================================
+2019-10-11 15:36:11.977 main MERCHCFG > merchantID=MRC-14344, keysDirectory=keys, keyAlias=<--- key alias name for P12 key --->, keyPassword=<--- P12 key password --->, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-10-11 15:36:12.046 main REQUEST  > UUID   >  9cb7dc42-f577-425d-b344-027a5a6811e2
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=jsmixxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=MRC-14344
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=xxxxx
+billTo_street1=1295xxxxxxxxxxxxRoad
+billTo_postalCode=94043
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxx
+billTo_state=CA
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=MRC-14344
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-10-11 15:36:12.056 main INFO     > Client, End of soapWrap   116ms
+2019-10-11 15:36:12.823 main INFO     > Loading the certificate from p12 file 
+2019-10-11 15:36:12.907 main EXCEPTION> Exception while loading KeyStore, 'null'
+2019-10-11 15:36:12.910 main EXCEPTION> 
+ClientException details:
+innerException: 
+com.cybersource.ws.client.ConfigException: The file "C:\Users\kumchand0\Apps\sts-workspace\Other Projects\payment-integ\keys\MRC-14344.p12" is missing or is not a file.
+	at com.cybersource.ws.client.MerchantConfig.getKeyFile(MerchantConfig.java:361)
+	at com.cybersource.ws.client.SecurityUtil.readAndStoreCertificateAndPrivateKey(SecurityUtil.java:130)
+	at com.cybersource.ws.client.SecurityUtil.loadMerchantP12File(SecurityUtil.java:106)
+	at com.cybersource.ws.client.Client.soapWrapAndSign(Client.java:237)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:123)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.cybersource.CybersourceIntegration.main(CybersourceIntegration.java:55)
+
+
+2019-10-11 15:36:46.388 main TRANSTART> =======================================
+2019-10-11 15:36:46.391 main MERCHCFG > merchantID=MRC-14344, keysDirectory=keys, keyAlias=<--- key alias name for P12 key --->, keyPassword=<--- P12 key password --->, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-10-11 15:36:46.459 main REQUEST  > UUID   >  274acc3c-4852-4991-80b0-1ebd5e5e79d1
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=jsmixxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=MRC-14344
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=xxxxx
+billTo_street1=1295xxxxxxxxxxxxRoad
+billTo_postalCode=94043
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxx
+billTo_state=CA
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=MRC-14344
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-10-11 15:36:46.470 main INFO     > Client, End of soapWrap   121ms
+2019-10-11 15:36:47.242 main INFO     > Loading the certificate from p12 file 
+2019-10-11 15:36:47.314 main EXCEPTION> Exception while loading KeyStore, 'null'
+2019-10-11 15:36:47.317 main EXCEPTION> 
+ClientException details:
+innerException: 
+java.io.IOException: stream does not represent a PKCS12 key store
+	at org.bouncycastle.jcajce.provider.keystore.pkcs12.PKCS12KeyStoreSpi.engineLoad(Unknown Source)
+	at java.security.KeyStore.load(Unknown Source)
+	at com.cybersource.ws.client.SecurityUtil.readAndStoreCertificateAndPrivateKey(SecurityUtil.java:130)
+	at com.cybersource.ws.client.SecurityUtil.loadMerchantP12File(SecurityUtil.java:106)
+	at com.cybersource.ws.client.Client.soapWrapAndSign(Client.java:237)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:123)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.cybersource.CybersourceIntegration.main(CybersourceIntegration.java:55)
+
+
+2019-10-11 15:37:17.524 main TRANSTART> =======================================
+2019-10-11 15:37:17.526 main MERCHCFG > merchantID=MRC-14344, keysDirectory=keys, keyAlias=mykey, keyPassword=password, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-10-11 15:37:17.588 main REQUEST  > UUID   >  74cac899-a01d-4c57-9d18-d5d85b363da8
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=jsmixxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=MRC-14344
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=xxxxx
+billTo_street1=1295xxxxxxxxxxxxRoad
+billTo_postalCode=94043
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxx
+billTo_state=CA
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=MRC-14344
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-10-11 15:37:17.600 main INFO     > Client, End of soapWrap   113ms
+2019-10-11 15:37:18.374 main INFO     > Loading the certificate from p12 file 
+2019-10-11 15:37:18.450 main EXCEPTION> Exception while loading KeyStore, 'null'
+2019-10-11 15:37:18.454 main EXCEPTION> 
+ClientException details:
+innerException: 
+java.io.IOException: stream does not represent a PKCS12 key store
+	at org.bouncycastle.jcajce.provider.keystore.pkcs12.PKCS12KeyStoreSpi.engineLoad(Unknown Source)
+	at java.security.KeyStore.load(Unknown Source)
+	at com.cybersource.ws.client.SecurityUtil.readAndStoreCertificateAndPrivateKey(SecurityUtil.java:130)
+	at com.cybersource.ws.client.SecurityUtil.loadMerchantP12File(SecurityUtil.java:106)
+	at com.cybersource.ws.client.Client.soapWrapAndSign(Client.java:237)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:123)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.cybersource.CybersourceIntegration.main(CybersourceIntegration.java:55)
+
+
+2019-11-22 19:03:16.428 main TRANSTART> =======================================
+2019-11-22 19:03:16.450 main MERCHCFG > merchantID=coc_cybersource, keysDirectory=keys, keyAlias=mykey, keyPassword=password, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-11-22 19:03:16.523 main REQUEST  > UUID   >  bb4a7462-4019-447a-83aa-eb8e54887a87
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=kchaxxxxxxxxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=coc_cybersource
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=Chxxxxxxxnt
+billTo_street1=Huxxxxxxt.
+billTo_postalCode=10014
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxxx
+billTo_state=NY
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=coc_cybersource
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-11-22 19:03:16.538 main INFO     > Client, End of soapWrap   111ms
+2019-11-22 19:03:17.357 main INFO     > Loading the certificate from p12 file 
+2019-11-22 19:03:17.444 main EXCEPTION> Exception while loading KeyStore, 'null'
+2019-11-22 19:03:17.447 main EXCEPTION> 
+ClientException details:
+innerException: 
+com.cybersource.ws.client.ConfigException: The file "C:\Users\kumchand0\Apps\sts-workspace\Other Projects\payment-integ\keys\coc_cybersource.p12" is missing or is not a file.
+	at com.cybersource.ws.client.MerchantConfig.getKeyFile(MerchantConfig.java:361)
+	at com.cybersource.ws.client.SecurityUtil.readAndStoreCertificateAndPrivateKey(SecurityUtil.java:130)
+	at com.cybersource.ws.client.SecurityUtil.loadMerchantP12File(SecurityUtil.java:106)
+	at com.cybersource.ws.client.Client.soapWrapAndSign(Client.java:237)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:123)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.service.impl.CybersourcePaymentService.main(CybersourcePaymentService.java:57)
+
+
+2019-11-22 19:22:58.532 main TRANSTART> =======================================
+2019-11-22 19:22:58.537 main MERCHCFG > merchantID=coc_cybersource, keysDirectory=keys, keyAlias=mykey, keyPassword=password, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-11-22 19:22:58.681 main REQUEST  > UUID   >  f8764f00-113d-46be-8d82-31f20a839806
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=kchaxxxxxxxxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=coc_cybersource
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=Chxxxxxxxnt
+billTo_street1=Huxxxxxxt.
+billTo_postalCode=10014
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxxx
+billTo_state=NY
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=coc_cybersource
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-11-22 19:22:58.698 main INFO     > Client, End of soapWrap   167ms
+2019-11-22 19:22:59.420 main INFO     > Loading the certificate from p12 file 
+2019-11-22 19:23:01.180 main EXCEPTION> Exception while loading KeyStore, 'null'
+2019-11-22 19:23:01.184 main EXCEPTION> 
+ClientException details:
+innerException: 
+java.io.IOException: PKCS12 key store mac invalid - wrong password or corrupted file.
+	at org.bouncycastle.jcajce.provider.keystore.pkcs12.PKCS12KeyStoreSpi.engineLoad(Unknown Source)
+	at java.security.KeyStore.load(Unknown Source)
+	at com.cybersource.ws.client.SecurityUtil.readAndStoreCertificateAndPrivateKey(SecurityUtil.java:130)
+	at com.cybersource.ws.client.SecurityUtil.loadMerchantP12File(SecurityUtil.java:106)
+	at com.cybersource.ws.client.Client.soapWrapAndSign(Client.java:237)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:123)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.service.impl.CybersourcePaymentService.main(CybersourcePaymentService.java:57)
+
+
+2019-11-22 19:23:22.103 main TRANSTART> =======================================
+2019-11-22 19:23:22.106 main MERCHCFG > merchantID=coc_cybersource, keysDirectory=keys, keyAlias=mykey, keyPassword=, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-11-22 19:23:22.173 main REQUEST  > UUID   >  2e3ba564-1669-4025-a85f-841f21d68901
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=kchaxxxxxxxxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=coc_cybersource
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=Chxxxxxxxnt
+billTo_street1=Huxxxxxxt.
+billTo_postalCode=10014
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxxx
+billTo_state=NY
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=coc_cybersource
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-11-22 19:23:22.192 main INFO     > Client, End of soapWrap   91ms
+2019-11-22 19:23:23.028 main INFO     > Loading the certificate from p12 file 
+2019-11-22 19:23:25.103 main EXCEPTION> Exception while loading KeyStore, 'null'
+2019-11-22 19:23:25.107 main EXCEPTION> 
+ClientException details:
+innerException: 
+java.io.IOException: PKCS12 key store mac invalid - wrong password or corrupted file.
+	at org.bouncycastle.jcajce.provider.keystore.pkcs12.PKCS12KeyStoreSpi.engineLoad(Unknown Source)
+	at java.security.KeyStore.load(Unknown Source)
+	at com.cybersource.ws.client.SecurityUtil.readAndStoreCertificateAndPrivateKey(SecurityUtil.java:130)
+	at com.cybersource.ws.client.SecurityUtil.loadMerchantP12File(SecurityUtil.java:106)
+	at com.cybersource.ws.client.Client.soapWrapAndSign(Client.java:237)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:123)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.service.impl.CybersourcePaymentService.main(CybersourcePaymentService.java:57)
+
+
+2019-11-22 19:24:48.907 main TRANSTART> =======================================
+2019-11-22 19:24:48.911 main MERCHCFG > merchantID=coc_cybersource, keysDirectory=keys, keyAlias=, keyPassword=, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-11-22 19:24:49.066 main REQUEST  > UUID   >  fd61551a-b336-4d82-852d-bba0fdaab360
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=kchaxxxxxxxxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=coc_cybersource
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=Chxxxxxxxnt
+billTo_street1=Huxxxxxxt.
+billTo_postalCode=10014
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxxx
+billTo_state=NY
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=coc_cybersource
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-11-22 19:24:49.113 main INFO     > Client, End of soapWrap   214ms
+2019-11-22 19:24:50.138 main INFO     > Loading the certificate from p12 file 
+2019-11-22 19:24:52.123 main EXCEPTION> Exception while loading KeyStore, 'null'
+2019-11-22 19:24:52.130 main EXCEPTION> 
+ClientException details:
+innerException: 
+java.io.IOException: PKCS12 key store mac invalid - wrong password or corrupted file.
+	at org.bouncycastle.jcajce.provider.keystore.pkcs12.PKCS12KeyStoreSpi.engineLoad(Unknown Source)
+	at java.security.KeyStore.load(Unknown Source)
+	at com.cybersource.ws.client.SecurityUtil.readAndStoreCertificateAndPrivateKey(SecurityUtil.java:130)
+	at com.cybersource.ws.client.SecurityUtil.loadMerchantP12File(SecurityUtil.java:106)
+	at com.cybersource.ws.client.Client.soapWrapAndSign(Client.java:237)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:123)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.service.impl.CybersourcePaymentService.main(CybersourcePaymentService.java:57)
+
+
+2019-11-22 19:27:54.480 main TRANSTART> =======================================
+2019-11-22 19:27:54.483 main MERCHCFG > merchantID=coc_cybersource, keysDirectory=keys, keyAlias=coc_cybersource, keyPassword=coc_cybersource, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=< -- Service URL or Transaction Processor URL -->, namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-11-22 19:27:54.618 main REQUEST  > UUID   >  3365ff1c-73fe-4710-93da-9fdfaf74f98a
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=kchaxxxxxxxxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=coc_cybersource
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=Chxxxxxxxnt
+billTo_street1=Huxxxxxxt.
+billTo_postalCode=10014
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxxx
+billTo_state=NY
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=coc_cybersource
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-11-22 19:27:54.636 main INFO     > Client, End of soapWrap   156ms
+2019-11-22 19:27:55.562 main INFO     > Loading the certificate from p12 file 
+2019-11-22 19:27:57.269 main INFO     > Client, End of loading Merchant Certificates 2633ms
+2019-11-22 19:27:57.270 main INFO     > Signing request...
+2019-11-22 19:27:57.445 main INFO     > Client, End of createSignedDoc   176ms
+2019-11-22 19:27:57.449 main INFO     > Using HttpURLConnection for connections.
+2019-11-22 19:27:57.452 main EXCEPTION> 
+ClientException details:
+innerException: 
+java.net.MalformedURLException: no protocol: < -- Service URL or Transaction Processor URL -->
+	at java.net.URL.<init>(Unknown Source)
+	at java.net.URL.<init>(Unknown Source)
+	at java.net.URL.<init>(Unknown Source)
+	at com.cybersource.ws.client.JDKHttpURLConnection.postDocument(JDKHttpURLConnection.java:57)
+	at com.cybersource.ws.client.Connection.post(Connection.java:102)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:161)
+	at com.cybersource.ws.client.Client.runTransaction(Client.java:76)
+	at com.coc.payments.service.impl.CybersourcePaymentService.main(CybersourcePaymentService.java:57)
+
+
+2019-11-22 19:29:21.099 main TRANSTART> =======================================
+2019-11-22 19:29:21.102 main MERCHCFG > merchantID=coc_cybersource, keysDirectory=keys, keyAlias=coc_cybersource, keyPassword=coc_cybersource, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=(null), namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-11-22 19:29:21.159 main REQUEST  > UUID   >  dacb00db-e8fa-4844-8620-298420f66c09
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=kchaxxxxxxxxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=coc_cybersource
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=Chxxxxxxxnt
+billTo_street1=Huxxxxxxt.
+billTo_postalCode=10014
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxxx
+billTo_state=NY
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=coc_cybersource
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-11-22 19:29:21.176 main INFO     > Client, End of soapWrap   77ms
+2019-11-22 19:29:21.839 main INFO     > Loading the certificate from p12 file 
+2019-11-22 19:29:23.505 main INFO     > Client, End of loading Merchant Certificates 2329ms
+2019-11-22 19:29:23.506 main INFO     > Signing request...
+2019-11-22 19:29:23.715 main INFO     > Client, End of createSignedDoc   210ms
+2019-11-22 19:29:23.720 main INFO     > Using HttpURLConnection for connections.
+2019-11-22 19:29:25.304 main INFO     > Sending 4141 bytes to https://ics2wstest.ic3.com/commerce/1.x/transactionProcessor
+2019-11-22 19:29:25.305 main INFO     > Reading response...
+2019-11-22 19:29:25.881 main INFO     > Parsing response...
+2019-11-22 19:29:25.884 main REPLY    > ccAuthReply_reasonCode=202
+decision=REJECT
+merchantReferenceCode=coc_cybersource
+requestID=5744311664876484504009
+reasonCode=202
+
+2019-11-22 19:29:25.885 main INFO     > Client, End of runTransaction Call   4787ms
+
+2019-11-22 19:33:00.875 main TRANSTART> =======================================
+2019-11-22 19:33:00.877 main MERCHCFG > merchantID=coc_cybersource, keysDirectory=keys, keyAlias=coc_cybersource, keyPassword=coc_cybersource, sendToProduction=false, sendToAkamai=false, targetAPIVersion=1.18, keyFilename=(null), serverURL=(null), namespaceURI=(null), enableLog=true, logDirectory=logs, logFilename=(null), logMaximumSize=10, customHttpClass=(null), customHttpClassEnabled=false, useHttpClient=false, enableJdkCert=false, enableCacert=false, timeout=1000, useSignAndEncrypted=false, certificateCacheEnabled=true
+2019-11-22 19:33:00.942 main REQUEST  > UUID   >  cd0f5a8d-d773-4ef1-94ca-08f3176f1879
+Input request is
+======================================= 
+billTo_city=Mountain View
+purchaseTotals_currency=USD
+billTo_email=kchaxxxxxxxxxxxxxxxx.com
+clientLibrary=Java Basic
+merchantReferenceCode=coc_cybersource
+billTo_country=US
+item_1_unitPrice=56.78
+billTo_lastName=Chxxxxxxxnt
+billTo_street1=Huxxxxxxt.
+billTo_postalCode=10014
+clientLibraryVersion=6.2.7
+ccAuthService_run=true
+billTo_firstName=xxxxx
+billTo_state=NY
+card_expirationMonth=xx
+item_0_unitPrice=12.34
+merchantID=coc_cybersource
+clientEnvironment=Windows 10/10.0/Oracle Corporation/1.8.0_172
+card_expirationYear=xxxx
+card_accountNumber=4111xxxxxxxx1111
+
+2019-11-22 19:33:00.958 main INFO     > Client, End of soapWrap   83ms
+2019-11-22 19:33:01.760 main INFO     > Loading the certificate from p12 file 
+2019-11-22 19:33:03.596 main INFO     > Client, End of loading Merchant Certificates 2639ms
+2019-11-22 19:33:03.603 main INFO     > Signing request...
+2019-11-22 19:33:03.932 main INFO     > Client, End of createSignedDoc   335ms
+2019-11-22 19:33:03.940 main INFO     > Using HttpURLConnection for connections.
+2019-11-22 19:33:05.182 main INFO     > Sending 4141 bytes to https://ics2wstest.ic3.com/commerce/1.x/transactionProcessor
+2019-11-22 19:33:05.183 main INFO     > Reading response...
+2019-11-22 19:33:06.143 main INFO     > Parsing response...
+2019-11-22 19:33:06.147 main REPLY    > purchaseTotals_currency=USD
+ccAuthReply_processorResponse=100
+ccAuthReply_avsCode=X
+ccAuthReply_reasonCode=100
+decision=ACCEPT
+merchantReferenceCode=coc_cybersource
+ccAuthReply_authorizationCode=xxxxxx
+ccAuthReply_reconciliationID=7700936573549YGW
+ccAuthReply_amount=69.12
+requestID=5744313863936856704012
+ccAuthReply_authorizedDateTime=2019-11-22T14:03:07Z
+reasonCode=100
+ccAuthReply_avsCodeRaw=I1
+
+2019-11-22 19:33:06.148 main INFO     > Client, End of runTransaction Call   5273ms

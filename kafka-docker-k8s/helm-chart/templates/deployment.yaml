@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+  name: kafka-deployment
+spec: 
+  replicas: 1
+  template: 
+    metadata: 
+      labels: 
+        app: kafka-deployment
+    spec: 
+      containers:
+      - name: kafka
+        image: spotify/kafka
+        ports:
+        - containerPort: 2181
+        - containerPort: 9092
+        env:
+        - name: ADVERTISED_HOST
+          value: "kafka"
+        - name: ADVERTISED_PORT
+          value: "9092"  
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+  name: demo-app-deployment
+spec: 
+  replicas: 1
+  template: 
+    metadata: 
+      labels: 
+        app: demo-app-deployment
+    spec: 
+      containers:
+      - name: demo-app
+        image: kchandrakant/demo:latest
+        ports: 
+        - containerPort: 8080
+        env:
+          - name: spring.profiles.active
+            valueFrom:
+              configMapKeyRef:
+                name: demo-configmaps
+                key: profile

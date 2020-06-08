@@ -1,0 +1,47 @@
+payments:
+  cassandra:
+    keyspace: coc_payments
+    host: host.docker.internal
+    post: 9042
+    username: cassandra
+    password: cassandra
+  kafka:
+    cluster: host.docker.internal:9092
+    topic: coc_payments
+    groupid: coc_consumer
+  oauth:
+    token:
+      endpoint:
+        url: http://host.docker.internal:9999/oauth/check_token
+        clientId: testClient
+        clientSecret: testSecret
+  paypal:
+    clientId: AR0aSaMTpi29QonY6_8ln80UEiTnr-ykjcd09gPmqkWfqF6KprV37L7trW8bPgGppUkgCgFPbnaIm-pA
+    clientSecret: ECRsaY2ooG43gbtZGv3or9AAw8BhzbRtYZbeE4DuPa5XT_3bCojdheJRxTNYdn3v96-x1K9PUheIMFvZ
+    successUrl: http://localhost:8080/process
+    failureUrl: http://localhost:8080/cancel
+    mode: sandbox
+  cybersource:
+    merchandId: coc_cybersource
+    keyAlias: coc_cybersource
+    keyPass: coc_cybersource
+  crypto:
+    key: aesEncryptionKey
+    initVector: encryptionIntVec
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: host.docker.internal:9092
+  main:
+    allow-bean-definition-overriding: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+api:
+  version: 1.0
+swagger:
+  enabled: true

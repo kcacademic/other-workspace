@@ -1,0 +1,18 @@
+version: '3'
+services:
+  kafka:
+    image: spotify/kafka
+    ports:
+      - 2181:2181
+      - 9092:9092
+    environment:
+      - ADVERTISED_HOST=kafka
+      - ADVERTISED_PORT=9092
+
+  app:
+    image: demo-app:latest
+    depends_on:
+      - kafka
+    ports:
+      - 8080:8080
+    command: ["-jar","-Dspring.profiles.active=docker","/app.jar"]

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Checkout</title>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+</head>
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+			class Payment extends React.Component {
+				render() {
+					return (
+						<div>
+							<iframe src="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7B366485E6258364J" height="500" width="500" sandbox="allow-top-navigation allow-scripts allow-same-origin allow-forms allow-presentation"/>
+						</div>
+					);
+				}
+			}
+			ReactDOM.render(
+				<Payment />,
+				document.getElementById('root')
+			);
+</script>
+</body>
+</html>

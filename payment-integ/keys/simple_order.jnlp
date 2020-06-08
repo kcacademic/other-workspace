@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jnlp spec="6.0+" codebase="https://ebc2test.cybersource.com/ebc2/jaws">
+    <information>
+        <title>CyberSource Key Generator Application</title>
+        <vendor>VISA, Inc.</vendor>
+        <homepage href="https://www.cybersource.com"/>
+        <description>CyberSource Key Generator Application</description>
+        <description kind="short">This application generates certificate signing requests for CyberSource systems
+and then provides the signed certificate as a file to the user.</description>
+        <shortcut online="false" install="false"/>
+    </information>
+    <security>
+        <all-permissions></all-permissions>
+    </security>
+    <resources>
+        <j2se version="1.7+" java-vm-args="-Ddeployment.security.TLSv1.2=true"/>
+        <jar href="javaws-1.0.jar"/>
+    </resources>
+    <application-desc main-class="com.cybersource.security.identity.CyberSourceKeyGeneration">
+        <argument>merchantId=coc_cybersource</argument>
+        <argument>orgId=coc_cybersource</argument>
+        <argument>userName=kchandrakant</argument>
+        <argument>ipAddress=127.0.0.1</argument>
+        <argument>keyType=SIMPLE_ORDER</argument>
+        <argument>otp=1b650c70-a584-4016-92aa-e52287c62eef</argument>
+        <argument>isMetaKey=false</argument>
+        <argument>urlAppContext=https://apitest.cybersource.com/merchant-mgmt/v1/keysets/transactionKey</argument>
+    </application-desc>
+</jnlp>
