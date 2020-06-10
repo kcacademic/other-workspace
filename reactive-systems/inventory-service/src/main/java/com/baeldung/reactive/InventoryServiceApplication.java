@@ -10,7 +10,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.baeldung.reactive.repository.ProductRepository;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -22,22 +26,22 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 @SpringBootApplication
 public class InventoryServiceApplication {
-	
+
 	@Autowired
 	ProductRepository productRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(InventoryServiceApplication.class, args);
-		
+
 	}
-	
+
 	@Bean
 	public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
-	    Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-	    factory.setResources(new Resource[]{new ClassPathResource("data.json")});
-	    return factory;
+		Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
+		factory.setResources(new Resource[] { new ClassPathResource("data.json") });
+		return factory;
 	}
-	
+
 	@Component
 	public class ObjectIdSerializer extends JsonSerializer<ObjectId> {
 
@@ -58,6 +62,14 @@ public class InventoryServiceApplication {
 			this.registerModule(module);
 		}
 
+	}
+
+	@ControllerAdvice
+	public class ProductExceptionController {
+		@ExceptionHandler(value = RuntimeException.class)
+		public ResponseEntity<Object> exception(RuntimeException exception) {
+			return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 }

@@ -14,7 +14,7 @@ import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.service.OrderService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost")
 @RequestMapping("/api/orders")
 public class OrderController {
 
@@ -23,10 +23,12 @@ public class OrderController {
 
 	@PostMapping
 	public Order create(@RequestBody Order order) {
-
-		return orderService.createOrder(order);
+		Order processedOrder = orderService.createOrder(order);
+		if ("FAILURE".equals(processedOrder.getOrderStatus()))
+			throw new RuntimeException("Order processing failed.");
+		return processedOrder;
 	}
-	
+
 	@GetMapping
 	public List<Order> getAll() {
 		return orderService.getOrders();
