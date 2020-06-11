@@ -22,7 +22,7 @@ public class ShippingService {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		int hour = cal.get(Calendar.HOUR_OF_DAY);
-		if (hour <= 18 && hour >= 0) {
+		if (hour <= 10 && hour >= 0) {
 			cal.add(Calendar.DATE, 1);
 			shippingDate = cal.getTime();
 		} else {

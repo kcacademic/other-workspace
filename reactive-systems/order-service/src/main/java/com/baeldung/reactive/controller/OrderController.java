@@ -25,7 +25,7 @@ public class OrderController {
 	public Order create(@RequestBody Order order) {
 		Order processedOrder = orderService.createOrder(order);
 		if ("FAILURE".equals(processedOrder.getOrderStatus()))
-			throw new RuntimeException("Order processing failed.");
+			throw new RuntimeException("Order processing failed, please try again later.");
 		return processedOrder;
 	}
 

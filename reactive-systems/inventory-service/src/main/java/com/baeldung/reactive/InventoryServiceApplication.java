@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.mongodb.MongoDatabaseFactory;
+import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +43,11 @@ public class InventoryServiceApplication {
 		factory.setResources(new Resource[] { new ClassPathResource("data.json") });
 		return factory;
 	}
+	
+    @Bean
+    MongoTransactionManager transactionManager(MongoDatabaseFactory dbFactory) {
+        return new MongoTransactionManager(dbFactory);
+    }
 
 	@Component
 	public class ObjectIdSerializer extends JsonSerializer<ObjectId> {
