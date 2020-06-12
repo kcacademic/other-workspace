@@ -13,14 +13,14 @@ import lombok.Data;
 @Document
 public class Order {
 
-	@Id
-	private ObjectId id;
-	private String userId;
-	private List<LineItem> lineItems;
-	private Long total;
-	private String paymentMode;
-	private Address shippingAddress;
-	private String orderStatus;
-	private Date shippingDate;
+    @Id
+    private ObjectId id;
+    private String userId;
+    private List<LineItem> lineItems;
+    private Long total;
+    private String paymentMode;
+    private Address shippingAddress;
+    private String orderStatus;
+    private Date shippingDate;
 
 }

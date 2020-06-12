@@ -15,11 +15,11 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
 
-	@Id
-	private ObjectId id;
-	private String userId;
-	private List<LineItem> lineItems;
-	private Long total;
-	private String orderStatus;
+    @Id
+    private ObjectId id;
+    private String userId;
+    private List<LineItem> lineItems;
+    private Long total;
+    private String orderStatus;
 
 }

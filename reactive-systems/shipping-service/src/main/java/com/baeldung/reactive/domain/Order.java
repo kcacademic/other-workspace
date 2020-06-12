@@ -15,13 +15,13 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
 
-	@Id
-	private ObjectId id;
-	private String userId;
-	private Long total;
-	private String paymentMode;
-	private Address shippingAddress;
-	private String orderStatus;
-	private Date shippingDate;
+    @Id
+    private ObjectId id;
+    private String userId;
+    private Long total;
+    private String paymentMode;
+    private Address shippingAddress;
+    private String orderStatus;
+    private Date shippingDate;
 
 }

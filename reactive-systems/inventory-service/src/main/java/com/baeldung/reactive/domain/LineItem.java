@@ -10,7 +10,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LineItem {
 
-	private ObjectId productId;
-	private int quantity;
+    private ObjectId productId;
+    private int quantity;
 
 }

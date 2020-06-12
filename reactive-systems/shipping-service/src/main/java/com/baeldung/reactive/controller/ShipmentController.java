@@ -10,15 +10,14 @@ import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.service.ShippingService;
 
 @RestController
-@RequestMapping("/api/shipping")
-public class ShippingController {
-	
-	@Autowired
-	ShippingService shippingService;
+@RequestMapping("/api/shipments")
+public class ShipmentController {
 
-	@PostMapping
-	public Order process(@RequestBody Order order) {
-		return shippingService.handleOrder(order);
-	}
+    @Autowired
+    ShippingService shippingService;
 
+    @PostMapping
+    public Order process(@RequestBody Order order) {
+        return shippingService.handleOrder(order);
+    }
 }

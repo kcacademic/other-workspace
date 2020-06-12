@@ -8,10 +8,10 @@ import lombok.Data;
 @Data
 @Document
 public class Product {
-	
-	private ObjectId id;
-	private String name;
-	private Long price;
-	private Integer stock;
+
+    private ObjectId id;
+    private String name;
+    private Long price;
+    private Integer stock;
 
 }

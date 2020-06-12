@@ -11,8 +11,8 @@ import lombok.Data;
 @Document
 public class Shipment {
 
-	private ObjectId id;
-	private Date shippingDate;
-	private Address address;
+    private ObjectId id;
+    private Date shippingDate;
+    private Address address;
 
 }

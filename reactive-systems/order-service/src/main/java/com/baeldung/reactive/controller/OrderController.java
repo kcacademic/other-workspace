@@ -18,20 +18,19 @@ import com.baeldung.reactive.service.OrderService;
 @RequestMapping("/api/orders")
 public class OrderController {
 
-	@Autowired
-	private OrderService orderService;
+    @Autowired
+    private OrderService orderService;
 
-	@PostMapping
-	public Order create(@RequestBody Order order) {
-		Order processedOrder = orderService.createOrder(order);
-		if ("FAILURE".equals(processedOrder.getOrderStatus()))
-			throw new RuntimeException("Order processing failed, please try again later.");
-		return processedOrder;
-	}
+    @PostMapping
+    public Order create(@RequestBody Order order) {
+        Order processedOrder = orderService.createOrder(order);
+        if ("FAILURE".equals(processedOrder.getOrderStatus()))
+            throw new RuntimeException("Order processing failed, please try again later.");
+        return processedOrder;
+    }
 
-	@GetMapping
-	public List<Order> getAll() {
-		return orderService.getOrders();
-	}
-
+    @GetMapping
+    public List<Order> getAll() {
+        return orderService.getOrders();
+    }
 }

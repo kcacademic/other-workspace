@@ -8,7 +8,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LineItem {
 
-	private String productId;
-	private int quantity;
+    private String productId;
+    private int quantity;
 
 }

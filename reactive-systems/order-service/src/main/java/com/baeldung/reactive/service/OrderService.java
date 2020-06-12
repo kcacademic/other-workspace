@@ -17,62 +17,55 @@ import com.baeldung.reactive.repository.OrderRepository;
 @Service
 public class OrderService {
 
-	@Autowired
-	private OrderRepository orderRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@Value("${inventory.service.url}")
-	private String inventoryServiceUrl;
+    @Value("${inventory.service.url}")
+    private String inventoryServiceUrl;
 
-	@Value("${shipping.service.url}")
-	private String shippingServiceUrl;
+    @Value("${shipping.service.url}")
+    private String shippingServiceUrl;
 
-	public Order createOrder(Order order) {
+    public Order createOrder(Order order) {
+        order.setLineItems(order.getLineItems()
+            .stream()
+            .filter(l -> l.getQuantity() > 0)
+            .collect(Collectors.toList()));
+        boolean success = true;
+        Order savedOrder = orderRepository.save(order);
+        // Call Inventory Service
+        Order inventoryResponse = null;
+        try {
+            inventoryResponse = restTemplate.postForObject(inventoryServiceUrl, order, Order.class);
+            System.out.println("Inventory Response: " + inventoryResponse);
+        } catch (Exception ex) {
+            success = false;
+        }
+        // Call Shipping Service
+        Order shippingResponse = null;
+        try {
+            shippingResponse = restTemplate.postForObject(shippingServiceUrl, order, Order.class);
+            System.out.println("Shipping Response: " + shippingResponse);
+        } catch (Exception ex) {
+            success = false;
+            HttpEntity<Order> deleteRequest = new HttpEntity<>(order);
+            ResponseEntity<Order> deleteResponse = restTemplate.exchange(inventoryServiceUrl, HttpMethod.DELETE, deleteRequest, Order.class);
+            System.out.println("Inventory Delete Response: " + deleteResponse);
+        }
+        if (success) {
+            savedOrder.setOrderStatus("SUCCESS");
+            savedOrder.setShippingDate(shippingResponse.getShippingDate());
+        } else {
+            savedOrder.setOrderStatus("FAILURE");
+        }
+        orderRepository.save(savedOrder);
+        return savedOrder;
+    }
 
-		order.setLineItems(order.getLineItems().stream().filter(l -> l.getQuantity() > 0).collect(Collectors.toList()));
-
-		boolean success = true;
-
-		Order savedOrder = orderRepository.save(order);
-
-		// Call Inventory Service
-		Order inventoryResponse = null;
-		try {
-			inventoryResponse = restTemplate.postForObject(inventoryServiceUrl, order, Order.class);
-			System.out.println("Inventory Response: " + inventoryResponse);
-		} catch (Exception ex) {
-			success = false;
-		}
-
-		// Call Shipping Service
-		Order shippingResponse = null;
-		try {
-			shippingResponse = restTemplate.postForObject(shippingServiceUrl, order, Order.class);
-			System.out.println("Shipping Response: " + shippingResponse);
-		} catch (Exception ex) {
-			success = false;
-			HttpEntity<Order> deleteRequest = new HttpEntity<>(order);
-			ResponseEntity<Order> deleteResponse = restTemplate.exchange(inventoryServiceUrl, HttpMethod.DELETE,
-					deleteRequest, Order.class);
-			System.out.println("Inventory Delete Response: " + deleteResponse);
-		}
-
-		if (success) {
-			savedOrder.setOrderStatus("SUCCESS");
-			savedOrder.setShippingDate(shippingResponse.getShippingDate());
-		} else {
-			savedOrder.setOrderStatus("FAILURE");
-		}
-
-		orderRepository.save(savedOrder);
-
-		return savedOrder;
-	}
-
-	public List<Order> getOrders() {
-		return orderRepository.findAll();
-	}
-
+    public List<Order> getOrders() {
+        return orderRepository.findAll();
+    }
 }
