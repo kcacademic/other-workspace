@@ -9,14 +9,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.repository.OrderRepository;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Service
 public class OrderService {
 
@@ -29,7 +32,14 @@ public class OrderService {
     @Value("${shipping.service.url}")
     private String shippingServiceUrl;
 
+    @Autowired
+    private ExchangeStrategies customExchangeStrategies;
+
     public Mono<Order> createOrder(Order order) {
+        log.info("Create order invoked with: {}", order);
+        WebClient webClient = WebClient.builder()
+            .exchangeStrategies(customExchangeStrategies)
+            .build();
 
         return Mono.just(order)
             .map(o -> {
@@ -38,10 +48,9 @@ public class OrderService {
                     .filter(l -> l.getQuantity() > 0)
                     .collect(Collectors.toList()));
             })
-            // .flatMap(orderRepository::save)
+            .flatMap(orderRepository::save)
             .flatMap(o -> {
-                return WebClient.create()
-                    .method(HttpMethod.POST)
+                return webClient.method(HttpMethod.POST)
                     .uri(inventoryServiceUrl)
                     .body(BodyInserters.fromValue(o))
                     .exchange()
@@ -52,7 +61,7 @@ public class OrderService {
                                 return clientHttpResponse.getBody();
                             })
                                 .doOnNext(b -> {
-                                    System.out.println("Inventory Error: " + new BufferedReader(new InputStreamReader(b.asInputStream())).lines()
+                                    log.error("Inventory Error: " + new BufferedReader(new InputStreamReader(b.asInputStream())).lines()
                                         .collect(Collectors.joining("\n")));
                                 })
                                 .subscribe();
@@ -68,8 +77,8 @@ public class OrderService {
             })
             .flatMap(o -> {
                 if (!"FAILURE".equals(o.getOrderStatus()))
-                    return WebClient.create(shippingServiceUrl)
-                        .post()
+                    return webClient.method(HttpMethod.POST)
+                        .uri(shippingServiceUrl)
                         .body(BodyInserters.fromValue(o))
                         .exchange()
                         .flatMap(clientResponse -> {
@@ -79,7 +88,7 @@ public class OrderService {
                                     return clientHttpResponse.getBody();
                                 })
                                     .doOnNext(b -> {
-                                        System.out.println("Shipping Error: " + new BufferedReader(new InputStreamReader(b.asInputStream())).lines()
+                                        log.error("Shipping Error: " + new BufferedReader(new InputStreamReader(b.asInputStream())).lines()
                                             .collect(Collectors.joining("\n")));
                                     })
                                     .subscribe();
@@ -92,14 +101,13 @@ public class OrderService {
                     return Mono.just(o);
             })
             .onErrorResume(err -> {
-                return WebClient.create()
-                    .method(HttpMethod.DELETE)
+                return webClient.method(HttpMethod.POST)
                     .uri(inventoryServiceUrl)
                     .body(BodyInserters.fromValue(order))
                     .retrieve()
                     .bodyToMono(Order.class)
                     .doOnError(e -> {
-                        System.out.println("Inventory Revert Call Failed :" + e.getMessage());
+                        log.error("Inventory Revert Call Failed :" + e.getMessage());
                     })
                     .map(o -> o.setOrderStatus("FAILURE")
                         .setResponseMessage(err.getMessage()));
@@ -116,6 +124,7 @@ public class OrderService {
     }
 
     public Flux<Order> getOrders() {
+        log.info("Get all orders invoked.");
         return orderRepository.findAll();
     }
 }

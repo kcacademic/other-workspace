@@ -10,9 +10,11 @@ import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.domain.Product;
 import com.baeldung.reactive.repository.ProductRepository;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Service
 public class ProductService {
 
@@ -25,7 +27,7 @@ public class ProductService {
 
     @Transactional
     public Mono<Order> handleOrder(Order order) {
-
+        log.info("Handle order invoked with: {}", order);
         return Flux.fromIterable(order.getLineItems())
             .flatMap(l -> productRepository.findById(l.getProductId()))
             .flatMap(p -> {
@@ -48,7 +50,7 @@ public class ProductService {
 
     @Transactional
     public Mono<Order> revertOrder(Order order) {
-
+        log.info("Revert order invoked with: {}", order);
         return Flux.fromIterable(order.getLineItems())
             .flatMap(l -> productRepository.findById(l.getProductId()))
             .flatMap(p -> {

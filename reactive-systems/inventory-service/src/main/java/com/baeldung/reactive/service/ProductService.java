@@ -12,6 +12,9 @@ import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.domain.Product;
 import com.baeldung.reactive.repository.ProductRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class ProductService {
 
@@ -24,6 +27,7 @@ public class ProductService {
 
     @Transactional
     public Order handleOrder(Order order) {
+        log.info("Handle order invoked with: {}", order);
         order.getLineItems()
             .stream()
             .map(l -> {
@@ -46,6 +50,7 @@ public class ProductService {
 
     @Transactional
     public Order revertOrder(Order order) {
+        log.info("Revert order invoked with: {}", order);
         order.getLineItems()
             .stream()
             .map(l -> {

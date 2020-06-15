@@ -5,11 +5,15 @@ import java.io.IOException;
 import org.bson.types.ObjectId;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.codec.json.Jackson2JsonDecoder;
+import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -43,6 +47,18 @@ public class ReactiveApplication {
             this.registerModule(module);
         }
 
+    }
+
+    @Bean
+    public ExchangeStrategies customExchangeStrategies() {
+        return ExchangeStrategies.builder()
+            .codecs(configurer -> {
+                configurer.defaultCodecs()
+                    .jackson2JsonDecoder(new Jackson2JsonDecoder(new CustomObjectMapper()));
+                configurer.defaultCodecs()
+                    .jackson2JsonEncoder(new Jackson2JsonEncoder(new CustomObjectMapper()));
+            })
+            .build();
     }
 
     @ControllerAdvice

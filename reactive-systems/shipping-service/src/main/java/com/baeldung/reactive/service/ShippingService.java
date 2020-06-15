@@ -10,6 +10,9 @@ import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.domain.Shipment;
 import com.baeldung.reactive.repository.ShipmentRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class ShippingService {
 
@@ -17,6 +20,7 @@ public class ShippingService {
     ShipmentRepository shipmentRepository;
 
     public Order handleOrder(Order order) {
+        log.info("Handle order invoked with: {}", order);
         Date shippingDate = null;
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());

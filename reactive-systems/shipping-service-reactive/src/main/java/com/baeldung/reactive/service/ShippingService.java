@@ -10,8 +10,10 @@ import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.domain.Shipment;
 import com.baeldung.reactive.repository.ShipmentRepository;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Service
 public class ShippingService {
 
@@ -19,7 +21,7 @@ public class ShippingService {
     ShipmentRepository shipmentRepository;
 
     public Mono<Order> handleOrder(Order order) {
-
+        log.info("Handle order invoked with: {}", order);
         return Mono.just(order)
             .flatMap(o -> {
                 Date shippingDate = null;

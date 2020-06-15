@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.service.OrderService;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost")
 @RequestMapping("/api/orders")
@@ -24,6 +26,7 @@ public class OrderController {
 
     @PostMapping
     public Mono<Order> create(@RequestBody Order order) {
+        log.info("Create order invoked with: {}", order);
         return orderService.createOrder(order)
             .map(o -> {
                 if ("FAILURE".equals(o.getOrderStatus()))
@@ -35,6 +38,7 @@ public class OrderController {
 
     @GetMapping
     public Flux<Order> getAll() {
+        log.info("Get all orders invoked.");
         return orderService.getOrders();
     }
 

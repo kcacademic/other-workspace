@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.service.ShippingService;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/shipments")
 public class ShipmentController {
@@ -20,6 +22,7 @@ public class ShipmentController {
 
     @PostMapping
     public Mono<Order> process(@RequestBody Order order) {
+        log.info("Process order invoked with: {}", order);
         return shippingService.handleOrder(order);
     }
 }

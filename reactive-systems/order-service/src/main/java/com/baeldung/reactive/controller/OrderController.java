@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.service.OrderService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost")
 @RequestMapping("/api/orders")
@@ -23,6 +26,7 @@ public class OrderController {
 
     @PostMapping
     public Order create(@RequestBody Order order) {
+        log.info("Create order invoked with: {}", order);
         Order processedOrder = orderService.createOrder(order);
         if ("FAILURE".equals(processedOrder.getOrderStatus()))
             throw new RuntimeException("Order processing failed, please try again later.");
@@ -31,6 +35,7 @@ public class OrderController {
 
     @GetMapping
     public List<Order> getAll() {
+        log.info("Get all orders invoked.");
         return orderService.getOrders();
     }
 }

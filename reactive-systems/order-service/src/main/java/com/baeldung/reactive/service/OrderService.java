@@ -14,6 +14,9 @@ import org.springframework.web.client.RestTemplate;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.repository.OrderRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class OrderService {
 
@@ -30,6 +33,7 @@ public class OrderService {
     private String shippingServiceUrl;
 
     public Order createOrder(Order order) {
+        log.info("Create order invoked with: {}", order);
         order.setLineItems(order.getLineItems()
             .stream()
             .filter(l -> l.getQuantity() > 0)
@@ -40,7 +44,7 @@ public class OrderService {
         Order inventoryResponse = null;
         try {
             inventoryResponse = restTemplate.postForObject(inventoryServiceUrl, order, Order.class);
-            System.out.println("Inventory Response: " + inventoryResponse);
+            log.error("Inventory Response: " + inventoryResponse);
         } catch (Exception ex) {
             success = false;
         }
@@ -48,12 +52,12 @@ public class OrderService {
         Order shippingResponse = null;
         try {
             shippingResponse = restTemplate.postForObject(shippingServiceUrl, order, Order.class);
-            System.out.println("Shipping Response: " + shippingResponse);
+            log.error("Shipping Response: " + shippingResponse);
         } catch (Exception ex) {
             success = false;
             HttpEntity<Order> deleteRequest = new HttpEntity<>(order);
             ResponseEntity<Order> deleteResponse = restTemplate.exchange(inventoryServiceUrl, HttpMethod.DELETE, deleteRequest, Order.class);
-            System.out.println("Inventory Delete Response: " + deleteResponse);
+            log.error("Inventory Delete Response: " + deleteResponse);
         }
         if (success) {
             savedOrder.setOrderStatus("SUCCESS");
@@ -66,6 +70,7 @@ public class OrderService {
     }
 
     public List<Order> getOrders() {
+        log.info("Get all orders invoked.");
         return orderRepository.findAll();
     }
 }

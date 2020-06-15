@@ -13,9 +13,11 @@ import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.domain.Product;
 import com.baeldung.reactive.service.ProductService;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost")
 @RequestMapping("/api/products")
@@ -26,12 +28,13 @@ public class ProductController {
 
     @GetMapping
     public Flux<Product> getAllProducts() {
+        log.info("Get all products invoked.");
         return productService.getProducts();
     }
 
     @PostMapping
     public Mono<Order> processOrder(@RequestBody Order order) {
-        System.out.println("Process Order: " + order);
+        log.info("Process order invoked with: {}", order);
         return Mono.just(order)
             .filter(o -> o.getLineItems() != null)
             .flatMap(productService::handleOrder)
@@ -40,7 +43,7 @@ public class ProductController {
 
     @DeleteMapping
     public Mono<Order> revertOrder(@RequestBody Order order) {
-        System.out.println("Revert Order: " + order);
+        log.info("Revert order invoked with: {}", order);
         return Mono.just(order)
             .filter(o -> o.getLineItems() != null)
             .flatMap(productService::revertOrder)
