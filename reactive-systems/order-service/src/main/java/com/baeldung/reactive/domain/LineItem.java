@@ -1,5 +1,7 @@
 package com.baeldung.reactive.domain;
 
+import org.bson.types.ObjectId;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -8,7 +10,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LineItem {
 
-    private String productId;
+    private ObjectId productId;
     private int quantity;
 
 }

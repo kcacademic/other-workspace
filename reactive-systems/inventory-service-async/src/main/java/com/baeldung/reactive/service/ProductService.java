@@ -21,10 +21,6 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public Flux<Product> getProducts() {
-        return productRepository.findAll();
-    }
-
     @Transactional
     public Mono<Order> handleOrder(Order order) {
         log.info("Handle order invoked with: {}", order);
@@ -66,6 +62,10 @@ public class ProductService {
                 return productRepository.save(p);
             })
             .then(Mono.just(order.setOrderStatus("SUCCESS")));
+    }
+
+    public Flux<Product> getProducts() {
+        return productRepository.findAll();
     }
 
 }

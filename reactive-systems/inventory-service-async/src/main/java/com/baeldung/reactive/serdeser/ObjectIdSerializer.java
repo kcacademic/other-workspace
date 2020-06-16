@@ -1,4 +1,4 @@
-package com.baeldung.reactive;
+package com.baeldung.reactive.serdeser;
 
 import java.io.IOException;
 
