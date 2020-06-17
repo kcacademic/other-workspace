@@ -1,0 +1,129 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: inventory
+spec:
+   selector:
+     name: inventory-deployment
+   type: NodePort
+   ports:
+   - name: inventory
+     protocol: TCP
+     port: 8081
+     nodePort: 30006
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: inventory-deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      name: inventory-deployment
+  template: 
+    metadata: 
+      labels: 
+        name: inventory-deployment
+    spec: 
+      containers:
+      - name: inventory
+        image: inventory-service-async:latest
+        imagePullPolicy: Never
+        ports: 
+        - containerPort: 8081
+        env:
+          - name: spring.profiles.active
+            valueFrom:
+              configMapKeyRef:
+                name: app-configs
+                key: profile
+---
+apiVersion: v1
+kind: Service
+metadata:
+   name: shipping
+spec:
+   selector:
+     name: shipping-deployment
+   type: NodePort
+   ports:
+   - name: shipping
+     protocol: TCP
+     port: 8082
+     nodePort: 30007
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: shipping-deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      name: shipping-deployment
+  template: 
+    metadata: 
+      labels: 
+        name: shipping-deployment
+    spec: 
+      containers:
+      - name: shipping
+        image: shipping-service-async:latest
+        imagePullPolicy: Never
+        ports: 
+        - containerPort: 8082
+        env:
+          - name: spring.profiles.active
+            valueFrom:
+              configMapKeyRef:
+                name: app-configs
+                key: profile
+---
+apiVersion: v1
+kind: Service
+metadata:
+   name: order
+spec:
+   selector:
+     name: order-deployment
+   type: NodePort
+   ports:
+   - name: order
+     protocol: TCP
+     port: 8080
+     nodePort: 30008
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: order-deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      name: order-deployment
+  template: 
+    metadata: 
+      labels: 
+        name: order-deployment
+    spec: 
+      containers:
+      - name: order
+        image: order-service-async:latest
+        imagePullPolicy: Never
+        ports: 
+        - containerPort: 8080
+        env:
+          - name: spring.profiles.active
+            valueFrom:
+              configMapKeyRef:
+                name: app-configs
+                key: profile
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configs
+data:
+  profile: docker

@@ -1,0 +1,3 @@
+docker build -t inventory-service-async .\inventory-service-async\
+docker build -t shipping-service-async .\shipping-service-async\
+docker build -t order-service-async .\order-service-async\
