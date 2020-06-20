@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baeldung.reactive.constants.OrderStatus;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.producer.OrderProducer;
 import com.baeldung.reactive.repository.OrderRepository;
@@ -34,11 +35,11 @@ public class OrderService {
             })
             .flatMap(orderRepository::save)
             .map(o -> {
-                orderProducer.sendMessage(o.setOrderStatus("INITIATION-SUCCESS"));
+                orderProducer.sendMessage(o.setOrderStatus(OrderStatus.INITIATION_SUCCESS));
                 return o;
             })
             .onErrorResume(err -> {
-                return Mono.just(order.setOrderStatus("FAILURE")
+                return Mono.just(order.setOrderStatus(OrderStatus.FAILURE)
                     .setResponseMessage(err.getMessage()));
             })
             .flatMap(orderRepository::save);

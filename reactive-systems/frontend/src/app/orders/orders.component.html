@@ -2,7 +2,7 @@
   <h2>Please place a new Order!</h2>
 </div>
 <div class="container" *ngIf="response !== null">
-  <h3>Your order {{response.id}} was successfully placed and will reach to you by {{response.shippingDate}}</h3>
+  <h3>Your order {{response.id}} was successfully placed, please check the status of order.</h3>
 </div>
 <div class="container" *ngIf="error !== null">
   <h3>Your order could not be placed at the moment: {{error.message}}</h3>
@@ -42,15 +42,19 @@
     </div>
   </form>
 </div>
+
 <div class="container">
-    <button class="btn btn-danger btn-block btn-lg" (click)="getOrders()">Get Previous Orders</button>
+  <button class="btn btn-danger btn-block btn-lg" (click)="getOrders()">Get Previous Orders</button>
+</div>
+
+<div class="container">
+  <button class="btn btn-danger btn-block btn-lg" (click)="getOrderStream()">Get Previous Order Stream </button>
 </div>
 <div class="container" *ngIf="previousOrders !== null">
   <h2>Your orders placed so far:</h2>
   <ul>
-    <li *ngFor="let order of previousOrders">
-      <p>Order ID: {{ order.id }}, Number of Items: {{order.lineItems.length}}, Total value: {{order.total}}</p>
-      <p>Shipping Address: {{order.shippingAddress.name}}, {{order.shippingAddress.house}}, {{order.shippingAddress.street}}, {{order.shippingAddress.city}}, {{order.shippingAddress.zip}}</p>
+    <li *ngFor="let order of previousOrders | async">
+      <p>Order ID: {{ order.id }}, Order Status: {{order.orderStatus}}, Order Message: {{order.responseMessage}}</p>
     </li>
   </ul>
 </div>

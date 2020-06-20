@@ -6,6 +6,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.baeldung.reactive.constants.OrderStatus;
 import com.baeldung.reactive.serdeser.ObjectIdSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -23,10 +24,10 @@ public class Order {
     private String userId;
     private List<LineItem> lineItems;
     private Long total;
-    private String orderStatus;
+    private OrderStatus orderStatus;
     private String responseMessage;
 
-    public Order setOrderStatus(String orderStatus) {
+    public Order setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
         return this;
     }

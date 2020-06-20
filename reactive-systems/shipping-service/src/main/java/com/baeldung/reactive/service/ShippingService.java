@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baeldung.reactive.constants.OrderStatus;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.domain.Shipment;
 import com.baeldung.reactive.repository.ShipmentRepository;
@@ -31,13 +32,10 @@ public class ShippingService {
         } else {
             throw new RuntimeException("The current time is off the limits to place order.");
         }
-        Shipment shipment = new Shipment();
-        shipment.setAddress(order.getShippingAddress());
-        shipment.setShippingDate(shippingDate);
-        shipmentRepository.save(shipment);
-        order.setShippingDate(shippingDate);
-        order.setOrderStatus("SUCCESS");
-        return order;
+        shipmentRepository.save(new Shipment().setAddress(order.getShippingAddress())
+            .setShippingDate(shippingDate));
+        return order.setShippingDate(shippingDate)
+            .setOrderStatus(OrderStatus.SUCCESS);
     }
 
 }

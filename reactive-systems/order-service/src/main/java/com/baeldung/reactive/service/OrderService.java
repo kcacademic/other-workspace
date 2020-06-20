@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.baeldung.reactive.constants.OrderStatus;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.repository.OrderRepository;
 
@@ -60,13 +61,12 @@ public class OrderService {
             log.error("Inventory Delete Response: " + deleteResponse);
         }
         if (success) {
-            savedOrder.setOrderStatus("SUCCESS");
+            savedOrder.setOrderStatus(OrderStatus.SUCCESS);
             savedOrder.setShippingDate(shippingResponse.getShippingDate());
         } else {
-            savedOrder.setOrderStatus("FAILURE");
+            savedOrder.setOrderStatus(OrderStatus.FAILURE);
         }
-        orderRepository.save(savedOrder);
-        return savedOrder;
+        return orderRepository.save(savedOrder);
     }
 
     public List<Order> getOrders() {

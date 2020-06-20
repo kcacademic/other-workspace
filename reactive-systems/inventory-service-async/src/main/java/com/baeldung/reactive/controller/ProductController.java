@@ -14,7 +14,7 @@ import reactor.core.publisher.Flux;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/products")
 public class ProductController {
 

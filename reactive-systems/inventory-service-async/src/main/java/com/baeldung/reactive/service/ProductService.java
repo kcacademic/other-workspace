@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.baeldung.reactive.constants.OrderStatus;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.domain.Product;
 import com.baeldung.reactive.repository.ProductRepository;
@@ -41,7 +42,7 @@ public class ProductService {
                     throw new RuntimeException("Product is out of stock: " + p.getId());
                 }
             })
-            .then(Mono.just(order.setOrderStatus("SUCCESS")));
+            .then(Mono.just(order.setOrderStatus(OrderStatus.SUCCESS)));
     }
 
     @Transactional
@@ -61,7 +62,7 @@ public class ProductService {
                 p.setStock(p.getStock() + q);
                 return productRepository.save(p);
             })
-            .then(Mono.just(order.setOrderStatus("SUCCESS")));
+            .then(Mono.just(order.setOrderStatus(OrderStatus.SUCCESS)));
     }
 
     public Flux<Product> getProducts() {

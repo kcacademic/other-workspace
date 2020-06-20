@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baeldung.reactive.constants.OrderStatus;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.domain.Shipment;
 import com.baeldung.reactive.repository.ShipmentRepository;
@@ -40,7 +41,7 @@ public class ShippingService {
                 return shipmentRepository.save(shipment);
             })
             .map(s -> order.setShippingDate(s.getShippingDate())
-                .setOrderStatus("SUCCESS"));
+                .setOrderStatus(OrderStatus.SUCCESS));
     }
 
 }

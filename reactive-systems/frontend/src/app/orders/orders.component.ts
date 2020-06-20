@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray } from "@angular/forms";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { OrdersBlockingService } from './orders-blocking.service';
+import { OrdersReactiveService } from './orders-reactive.service';
 
 @Component({
   selector: 'app-orders',
@@ -12,11 +15,13 @@ export class OrdersComponent implements OnInit {
   form: FormGroup
   response: any
   error: any
-  previousOrders: any
+  previousOrders: Observable<Object>
   itemList: any
   paymentModes: any
 
-  constructor(public fb: FormBuilder, private http: HttpClient) {
+  constructor(public fb: FormBuilder, private http: HttpClient,
+    private ordersBlockingService: OrdersBlockingService,
+    private ordersReactiveService: OrdersReactiveService) {
       this.paymentModes = this.fetchPaymentModes()
       this.fetchProducts().then(data => this.form = this.createForm());
   }
@@ -89,16 +94,11 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrders() {
-      this.http.get('http://localhost:8080/api/orders').subscribe(
-        (response) => {
-          console.log(response)
-          this.previousOrders = response
-        },
-        (error) => {
-          console.log(error)
-          this.error = error
-        }
-      )
+      this.previousOrders = this.ordersBlockingService.getOrders()
+  }
+
+  getOrderStream() {
+      this.previousOrders = this.ordersReactiveService.getOrderStream()
   }
 
 }

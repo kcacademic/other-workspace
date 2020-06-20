@@ -12,6 +12,7 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.baeldung.reactive.constants.OrderStatus;
 import com.baeldung.reactive.domain.Order;
 import com.baeldung.reactive.repository.OrderRepository;
 
@@ -72,11 +73,11 @@ public class OrderService {
                     });
             })
             .onErrorResume(err -> {
-                return Mono.just(order.setOrderStatus("FAILURE")
+                return Mono.just(order.setOrderStatus(OrderStatus.FAILURE)
                     .setResponseMessage(err.getMessage()));
             })
             .flatMap(o -> {
-                if (!"FAILURE".equals(o.getOrderStatus()))
+                if (!OrderStatus.FAILURE.equals(o.getOrderStatus()))
                     return webClient.method(HttpMethod.POST)
                         .uri(shippingServiceUrl)
                         .body(BodyInserters.fromValue(o))
@@ -109,15 +110,15 @@ public class OrderService {
                     .doOnError(e -> {
                         log.error("Inventory Revert Call Failed :" + e.getMessage());
                     })
-                    .map(o -> o.setOrderStatus("FAILURE")
+                    .map(o -> o.setOrderStatus(OrderStatus.FAILURE)
                         .setResponseMessage(err.getMessage()));
             })
             .map(o -> {
-                if (!"FAILURE".equals(o.getOrderStatus()))
+                if (!OrderStatus.FAILURE.equals(o.getOrderStatus()))
                     return order.setShippingDate(o.getShippingDate())
-                        .setOrderStatus("SUCCESS");
+                        .setOrderStatus(OrderStatus.SUCCESS);
                 else
-                    return order.setOrderStatus("FAILURE")
+                    return order.setOrderStatus(OrderStatus.FAILURE)
                         .setResponseMessage(o.getResponseMessage());
             })
             .flatMap(orderRepository::save);

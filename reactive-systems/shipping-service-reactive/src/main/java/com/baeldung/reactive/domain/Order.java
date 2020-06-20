@@ -6,6 +6,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.baeldung.reactive.constants.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -21,7 +22,7 @@ public class Order {
     private Long total;
     private String paymentMode;
     private Address shippingAddress;
-    private String orderStatus;
+    private OrderStatus orderStatus;
     private Date shippingDate;
 
     public Order setShippingDate(Date shippingDate) {
@@ -29,7 +30,7 @@ public class Order {
         return this;
     }
 
-    public Order setOrderStatus(String orderStatus) {
+    public Order setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
         return this;
     }

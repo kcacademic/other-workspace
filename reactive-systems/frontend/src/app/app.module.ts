@@ -7,6 +7,9 @@ import { OrdersComponent } from './orders/orders.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { OrdersBlockingService } from './orders/orders-blocking.service';
+import { OrdersReactiveService } from './orders/orders-reactive.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    OrdersBlockingService,
+    OrdersReactiveService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
