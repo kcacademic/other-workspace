@@ -5,38 +5,38 @@ const EventSource: any = window['EventSource'];
 @Injectable()
 export class OrdersReactiveService {
 
-  url: string = 'http://localhost:8080/api/orders';
+  url: string = 'http://localhost:8080/api/orders'
 
-  orders: string[] = [];
+  orders: string[] = []
 
   constructor(private _zone: NgZone) {}
 
   getOrderStream() {
-    this.orders = [];
+    this.orders = []
     return Observable.create((observer) => {
-      let eventSource = new EventSource(this.url);
+      let eventSource = new EventSource(this.url)
       eventSource.onmessage = (event) => {
-        console.log('Received event: ', event);
-        let json = JSON.parse(event.data);
+        console.log('Received event: ', event)
+        let json = JSON.parse(event.data)
         this.orders.push(json);
         this._zone.run(() => {
-          observer.next(this.orders);
-        });
-      };
+          observer.next(this.orders)
+        })
+      }
       eventSource.onerror = (error) => {
         if(eventSource.readyState === 0) {
-          console.log('The stream has been closed by the server.');
-          eventSource.close();
+          console.log('The stream has been closed by the server.')
+          eventSource.close()
           this._zone.run(() => {
-            observer.complete();
-          });
+            observer.complete()
+          })
         } else {
           this._zone.run(() => {
-            observer.error('EventSource error: ' + error);
-          });
+            observer.error('EventSource error: ' + error)
+          })
         }
       }
-    });
+    })
   }
 
 }

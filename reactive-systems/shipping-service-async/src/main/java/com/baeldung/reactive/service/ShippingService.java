@@ -35,10 +35,8 @@ public class ShippingService {
                 } else {
                     throw new RuntimeException("The current time is off the limits to place order.");
                 }
-                Shipment shipment = new Shipment();
-                shipment.setAddress(order.getShippingAddress());
-                shipment.setShippingDate(shippingDate);
-                return shipmentRepository.save(shipment);
+                return shipmentRepository.save(new Shipment().setAddress(order.getShippingAddress())
+                    .setShippingDate(shippingDate));
             })
             .map(s -> order.setShippingDate(s.getShippingDate())
                 .setOrderStatus(OrderStatus.SUCCESS));

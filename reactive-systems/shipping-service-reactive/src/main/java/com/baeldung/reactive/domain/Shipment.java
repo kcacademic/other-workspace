@@ -15,4 +15,14 @@ public class Shipment {
     private Date shippingDate;
     private Address address;
 
+    public Shipment setShippingDate(Date shippingDate) {
+        this.shippingDate = shippingDate;
+        return this;
+    }
+
+    public Shipment setAddress(Address address) {
+        this.address = address;
+        return this;
+    }
+
 }
