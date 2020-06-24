@@ -36,12 +36,12 @@ public class OrderService {
     @Autowired
     private ExchangeStrategies customExchangeStrategies;
 
+    private WebClient webClient = WebClient.builder()
+        .exchangeStrategies(customExchangeStrategies)
+        .build();
+
     public Mono<Order> createOrder(Order order) {
         log.info("Create order invoked with: {}", order);
-        WebClient webClient = WebClient.builder()
-            .exchangeStrategies(customExchangeStrategies)
-            .build();
-
         return Mono.just(order)
             .map(o -> {
                 return o.setLineItems(o.getLineItems()
@@ -66,8 +66,8 @@ public class OrderService {
                                         .collect(Collectors.joining("\n")));
                                 })
                                 .subscribe();
-                            throw new RuntimeException("Inventory Call Failed :" + clientResponse.statusCode()
-                                .getReasonPhrase());
+                            return Mono.error(new RuntimeException("Inventory Call Failed :" + clientResponse.statusCode()
+                                .getReasonPhrase()));
                         } else
                             return clientResponse.bodyToMono(Order.class);
                     });
@@ -93,8 +93,8 @@ public class OrderService {
                                             .collect(Collectors.joining("\n")));
                                     })
                                     .subscribe();
-                                throw new RuntimeException("Shipping Call Failed :" + clientResponse.statusCode()
-                                    .getReasonPhrase());
+                                return Mono.error(new RuntimeException("Shipping Call Failed :" + clientResponse.statusCode()
+                                    .getReasonPhrase()));
                             } else
                                 return clientResponse.bodyToMono(Order.class);
                         });

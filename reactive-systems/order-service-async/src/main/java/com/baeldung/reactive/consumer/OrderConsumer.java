@@ -35,7 +35,7 @@ public class OrderConsumer {
                 })
                 .flatMap(orderRepository::save)
                 .subscribe();
-        else if ("INVENTORY-SUCCESS".equals(order.getOrderStatus()))
+        else if (OrderStatus.INVENTORY_SUCCESS.equals(order.getOrderStatus()))
             orderRepository.findById(order.getId())
                 .map(o -> {
                     orderProducer.sendMessage(o.setOrderStatus(OrderStatus.PREPARE_SHIPPING));
@@ -44,7 +44,7 @@ public class OrderConsumer {
                 })
                 .flatMap(orderRepository::save)
                 .subscribe();
-        else if ("SHIPPING-FAILURE".equals(order.getOrderStatus()))
+        else if (OrderStatus.SHIPPING_FAILURE.equals(order.getOrderStatus()))
             orderRepository.findById(order.getId())
                 .map(o -> {
                     orderProducer.sendMessage(o.setOrderStatus(OrderStatus.REVERT_INVENTORY));

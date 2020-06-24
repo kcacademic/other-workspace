@@ -27,22 +27,19 @@ public class ProductService {
 
     @Transactional
     public Order handleOrder(Order order) {
-        log.info("Handle order invoked with: {}", order);        
+        log.info("Handle order invoked with: {}", order);
         order.getLineItems()
             .stream()
             .forEach(l -> {
                 Optional<Product> o = productRepository.findById(l.getProductId());
-                if (o.isPresent()) {
-                    Product p = o.get();
-                    if (p.getStock() >= l.getQuantity()) {
-                        p.setStock(p.getStock() - l.getQuantity());
-                        productRepository.save(p);
-                    } else {
-                        throw new RuntimeException("Product is out of stock: " + l.getProductId());
-                    }
+                Product p = o.orElseThrow(() -> new RuntimeException("Could not find the product: " + l.getProductId()));
+                if (p.getStock() >= l.getQuantity()) {
+                    p.setStock(p.getStock() - l.getQuantity());
+                    productRepository.save(p);
                 } else {
-                    throw new RuntimeException("Could not find the product: " + l.getProductId());
+                    throw new RuntimeException("Product is out of stock: " + l.getProductId());
                 }
+
             });
         return order.setOrderStatus(OrderStatus.SUCCESS);
     }
@@ -54,13 +51,10 @@ public class ProductService {
             .stream()
             .forEach(l -> {
                 Optional<Product> o = productRepository.findById(l.getProductId());
-                if (o.isPresent()) {
-                    Product p = o.get();
-                    p.setStock(p.getStock() + l.getQuantity());
-                    productRepository.save(p);
-                } else {
-                    throw new RuntimeException("Could not find the product: " + l.getProductId());
-                }
+                Product p = o.orElseThrow(() -> new RuntimeException("Could not find the product: " + l.getProductId()));
+                p.setStock(p.getStock() + l.getQuantity());
+                productRepository.save(p);
+
             });
         return order.setOrderStatus(OrderStatus.SUCCESS);
     }
