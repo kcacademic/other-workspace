@@ -51,6 +51,13 @@ cli-aliases:
     modules:
       local:
         sequential: true
+execution:
+- concurrency:
+    local: 10
+  executor: jmeter
+  iterations: 50
+  scenario: with_script
+  throughput: {}
 included-configs: []
 install-id: Docker
 modules:
@@ -101,6 +108,7 @@ modules:
     class: bzt.modules.services.InstallChecker
   jmeter:
     class: bzt.modules.jmeter.JMeterExecutor
+    path: /root/.bzt/jmeter-taurus/5.2.1/bin/jmeter.sh
     plugins:
     - jpgc-casutg
     - jpgc-dummy
@@ -118,6 +126,7 @@ modules:
       summariser.name: ''
     protocol-handlers:
       http: bzt.jmx.http.HTTPProtocolHandler
+    version: 5.2.1
   junit:
     class: bzt.modules.java.JUnitTester
   junit-xml:
@@ -171,6 +180,29 @@ provisioning: local
 reporting:
 - module: final-stats
 - module: console
+- criteria:
+  - condition: '>'
+    fail: true
+    label: ''
+    logic: for
+    message: null
+    stop: false
+    subject: avg-rt
+    threshold: 150ms
+    timeframe: 10s
+  - condition: '>'
+    fail: true
+    label: ''
+    logic: for
+    message: null
+    stop: true
+    subject: fail
+    threshold: 50%
+    timeframe: 10s
+  module: passfail
+scenarios:
+  with_script:
+    script: /bzt-configs/jmeter-script.jmx
 services:
 - local:
   - metrics:

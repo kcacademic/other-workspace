@@ -1,3 +1,3 @@
-docker run --rm -v C:/Users/kchandrakant/MyDrive/Learning/Codebase/other-projects/jmeter-docker/scripts:/mnt/jmeter/scripts -v C:/Users/kchandrakant/MyDrive/Learning/Codebase/other-projects/jmeter-docker/artifacts:/mnt/jmeter/artifacts jmeter -n -t /mnt/jmeter/scripts/jmeter-script.jmx -l /mnt/jmeter/artifacts/result.jtl -j /mnt/jmeter/artifacts/jmeter.log
+docker run --rm -v C:/Users/kchandrakant/Desktop/jmeter-docker/scripts:/mnt/jmeter jmeter -n -t /mnt/jmeter/jmeter-script.jmx -l /mnt/jmeter/result.jtl -j /mnt/jmeter/jmeter.log
 
-docker run --rm -v C:/Users/kchandrakant/MyDrive/Learning/Codebase/other-projects/jmeter-docker/scripts:/bzt-configs -v C:/Users/kchandrakant/MyDrive/Learning/Codebase/other-projects/jmeter-docker/artifacts:/tmp/artifacts blazemeter/taurus
+docker run --rm -v C:/Users/kchandrakant/Desktop/jmeter-docker/scripts:/bzt-configs -v C:/Users/kchandrakant/Desktop/jmeter-docker/artifacts:/tmp/artifacts blazemeter/taurus

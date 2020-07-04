@@ -36,7 +36,9 @@
     "jmeter.save.saveservice.connect_time": "true",
     "jmeterengine.force.system.exit": "true",
     "summariser.name": ""
-   }
+   },
+   "version": "5.2.1",
+   "path": "/root/.bzt/jmeter-taurus/5.2.1/bin/jmeter.sh"
   },
   "locust": {
    "class": "bzt.modules.locustio.LocustIOExecutor"
@@ -263,6 +265,33 @@
   },
   {
    "module": "console"
+  },
+  {
+   "module": "passfail",
+   "criteria": [
+    {
+     "subject": "avg-rt",
+     "condition": ">",
+     "threshold": "150ms",
+     "logic": "for",
+     "timeframe": "10s",
+     "label": "",
+     "stop": false,
+     "fail": true,
+     "message": null
+    },
+    {
+     "subject": "fail",
+     "condition": ">",
+     "threshold": "50%",
+     "logic": "for",
+     "timeframe": "10s",
+     "label": "",
+     "stop": true,
+     "fail": true,
+     "message": null
+    }
+   ]
   }
  ],
  "services": [
@@ -286,6 +315,22 @@
   }
  ],
  "install-id": "Docker",
+ "execution": [
+  {
+   "iterations": 50,
+   "concurrency": {
+    "local": 10
+   },
+   "scenario": "with_script",
+   "executor": "jmeter",
+   "throughput": {}
+  }
+ ],
+ "scenarios": {
+  "with_script": {
+   "script": "/bzt-configs/jmeter-script.jmx"
+  }
+ },
  "included-configs": [],
  "version": "1.14.2"
 }
