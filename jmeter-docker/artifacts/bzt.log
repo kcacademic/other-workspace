@@ -1,0 +1,177 @@
+[2020-07-04 12:06:01,090 INFO root] Taurus CLI Tool v1.14.2
+[2020-07-04 12:06:01,092 DEBUG root] Command-line options: {'log': '/tmp/artifacts/bzt.log', 'option': None, 'quiet': None, 'verbose': None, 'no_system_configs': None, 'aliases': []}
+[2020-07-04 12:06:01,093 DEBUG root] Python: CPython 3.6.9
+[2020-07-04 12:06:01,093 DEBUG root] OS: uname_result(system='Linux', node='f705b594a6f0', release='4.19.76-linuxkit', version='#1 SMP Thu Oct 17 19:31:58 UTC 2019', machine='x86_64', processor='x86_64')
+[2020-07-04 12:06:01,096 INFO root] Starting with configs: []
+[2020-07-04 12:06:01,097 DEBUG root] Using personal config: /root/.bzt-rc
+[2020-07-04 12:06:01,098 INFO Engine] Configuring...
+[2020-07-04 12:06:01,099 DEBUG Engine] Reading system configs from: /etc/bzt.d
+[2020-07-04 12:06:01,124 DEBUG Engine] Base configs list: ['/usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml', '/etc/bzt.d/50-pbench-enhanced.json', '/etc/bzt.d/90-artifacts-dir.json', '/etc/bzt.d/99-zinstallID.json']
+[2020-07-04 12:06:01,125 DEBUG Engine.Configuration] Configs: ['/usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml', '/etc/bzt.d/50-pbench-enhanced.json', '/etc/bzt.d/90-artifacts-dir.json', '/etc/bzt.d/99-zinstallID.json']
+[2020-07-04 12:06:01,126 DEBUG Engine.Configuration] Reading /usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml as YAML
+[2020-07-04 12:06:01,152 DEBUG Engine.Configuration] Reading /etc/bzt.d/50-pbench-enhanced.json as YAML
+[2020-07-04 12:06:01,154 DEBUG Engine.Configuration] Reading /etc/bzt.d/90-artifacts-dir.json as YAML
+[2020-07-04 12:06:01,156 DEBUG Engine.Configuration] Reading /etc/bzt.d/99-zinstallID.json as YAML
+[2020-07-04 12:06:01,157 DEBUG Engine] User configs list: ['/root/.bzt-rc']
+[2020-07-04 12:06:01,158 DEBUG Engine.Configuration] Configs: ['/root/.bzt-rc']
+[2020-07-04 12:06:01,159 DEBUG Engine.Configuration] Reading /root/.bzt-rc as YAML
+[2020-07-04 12:06:01,163 DEBUG Engine.Configuration] Configs: ['/root/.bzt-rc']
+[2020-07-04 12:06:01,164 DEBUG Engine.Configuration] Reading /root/.bzt-rc as YAML
+[2020-07-04 12:06:01,169 DEBUG Engine] Requesting updates info: https://gettaurus.org/updates/?version=1.14.2&installID=Docker
+[2020-07-04 12:06:01,170 INFO Engine] Artifacts dir: /tmp/artifacts
+[2020-07-04 12:06:01,170 DEBUG HTTPClient] Making HTTP request GET https://gettaurus.org/updates/?version=1.14.2&installID=Docker
+[2020-07-04 12:06:01,178 DEBUG urllib3.connectionpool] Starting new HTTPS connection (1): gettaurus.org:443
+[2020-07-04 12:06:01,183 DEBUG Engine] New artifact filename: /tmp/artifacts/effective
+[2020-07-04 12:06:01,192 DEBUG Engine.Configuration] Dumping YAML config into /tmp/artifacts/effective.yml
+[2020-07-04 12:06:01,228 DEBUG Engine.Configuration] Dumping JSON config into /tmp/artifacts/effective.json
+[2020-07-04 12:06:01,231 DEBUG root] Closing log handler: /tmp/artifacts/bzt.log
+[2020-07-04 12:06:01,242 DEBUG root] Switched writing logs to /tmp/artifacts/bzt.log
+[2020-07-04 12:06:01,243 DEBUG root] Linting config
+[2020-07-04 12:06:01,245 INFO Engine] Preparing...
+[2020-07-04 12:06:01,246 DEBUG Engine] Module config: consolidator {'class': 'bzt.modules.aggregator.ConsolidatingAggregator'}
+[2020-07-04 12:06:01,247 DEBUG root] Importing module: bzt.modules.aggregator
+[2020-07-04 12:06:01,431 DEBUG root] Loading class: 'ConsolidatingAggregator' from <module 'bzt.modules.aggregator' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/aggregator.py'>
+[2020-07-04 12:06:01,431 DEBUG Engine.consolidator] Buffer scaling setup: percentile 95.0 from [0.0, 50.0, 90.0, 95.0, 99.0, 99.9, 100.0] selected
+[2020-07-04 12:06:01,432 DEBUG Engine] Module config: monitoring {'class': 'bzt.modules.monitoring.Monitoring'}
+[2020-07-04 12:06:01,433 DEBUG root] Importing module: bzt.modules.monitoring
+[2020-07-04 12:06:01,435 DEBUG root] Loading class: 'Monitoring' from <module 'bzt.modules.monitoring' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/monitoring.py'>
+[2020-07-04 12:06:01,436 DEBUG Engine] Module config: local {'class': 'bzt.modules.provisioning.Local'}
+[2020-07-04 12:06:01,437 DEBUG root] Importing module: bzt.modules.provisioning
+[2020-07-04 12:06:01,438 DEBUG root] Loading class: 'Local' from <module 'bzt.modules.provisioning' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/provisioning.py'>
+[2020-07-04 12:06:01,438 ERROR root] Config Error: No 'execution' is configured. Did you forget to pass config files?
+[2020-07-04 12:06:01,440 DEBUG root] TaurusConfigError: No 'execution' is configured. Did you forget to pass config files?
+  File "/usr/local/lib/python3.6/dist-packages/bzt/cli.py", line 258, in perform
+    self.engine.prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/engine.py", line 195, in prepare
+    self.__prepare_provisioning()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/engine.py", line 591, in __prepare_provisioning
+    self.provisioning.prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/modules/provisioning.py", line 70, in prepare
+    super(Local, self).prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/modules.py", line 129, in prepare
+    raise exc
+[2020-07-04 12:06:01,441 INFO Engine] Post-processing...
+[2020-07-04 12:06:01,442 DEBUG Engine.consolidator] Consolidator buffer[0]: dict_keys([])
+[2020-07-04 12:06:01,450 DEBUG Engine.Configuration] Dumping YAML config into /tmp/artifacts/effective.yml
+[2020-07-04 12:06:01,478 DEBUG Engine.Configuration] Dumping JSON config into /tmp/artifacts/effective.json
+[2020-07-04 12:06:01,481 INFO root] Artifacts dir: /tmp/artifacts
+[2020-07-04 12:06:01,487 WARNING root] Done performing with code: 1
+[2020-07-04 12:06:01,488 DEBUG root] Closing log handler: /tmp/artifacts/bzt.log
+[2020-07-04 12:07:07,965 INFO root] Taurus CLI Tool v1.14.2
+[2020-07-04 12:07:07,966 DEBUG root] Command-line options: {'log': '/tmp/artifacts/bzt.log', 'option': None, 'quiet': None, 'verbose': None, 'no_system_configs': None, 'aliases': []}
+[2020-07-04 12:07:07,967 DEBUG root] Python: CPython 3.6.9
+[2020-07-04 12:07:07,968 DEBUG root] OS: uname_result(system='Linux', node='f1ed79ced024', release='4.19.76-linuxkit', version='#1 SMP Thu Oct 17 19:31:58 UTC 2019', machine='x86_64', processor='x86_64')
+[2020-07-04 12:07:07,969 INFO root] Starting with configs: []
+[2020-07-04 12:07:07,970 DEBUG root] Using personal config: /root/.bzt-rc
+[2020-07-04 12:07:07,971 INFO Engine] Configuring...
+[2020-07-04 12:07:07,972 DEBUG Engine] Reading system configs from: /etc/bzt.d
+[2020-07-04 12:07:07,996 DEBUG Engine] Base configs list: ['/usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml', '/etc/bzt.d/50-pbench-enhanced.json', '/etc/bzt.d/90-artifacts-dir.json', '/etc/bzt.d/99-zinstallID.json']
+[2020-07-04 12:07:07,999 DEBUG Engine.Configuration] Configs: ['/usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml', '/etc/bzt.d/50-pbench-enhanced.json', '/etc/bzt.d/90-artifacts-dir.json', '/etc/bzt.d/99-zinstallID.json']
+[2020-07-04 12:07:08,001 DEBUG Engine.Configuration] Reading /usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml as YAML
+[2020-07-04 12:07:08,027 DEBUG Engine.Configuration] Reading /etc/bzt.d/50-pbench-enhanced.json as YAML
+[2020-07-04 12:07:08,028 DEBUG Engine.Configuration] Reading /etc/bzt.d/90-artifacts-dir.json as YAML
+[2020-07-04 12:07:08,030 DEBUG Engine.Configuration] Reading /etc/bzt.d/99-zinstallID.json as YAML
+[2020-07-04 12:07:08,031 DEBUG Engine] User configs list: ['/root/.bzt-rc']
+[2020-07-04 12:07:08,032 DEBUG Engine.Configuration] Configs: ['/root/.bzt-rc']
+[2020-07-04 12:07:08,033 DEBUG Engine.Configuration] Reading /root/.bzt-rc as YAML
+[2020-07-04 12:07:08,036 DEBUG Engine.Configuration] Configs: ['/root/.bzt-rc']
+[2020-07-04 12:07:08,037 DEBUG Engine.Configuration] Reading /root/.bzt-rc as YAML
+[2020-07-04 12:07:08,042 DEBUG Engine] Requesting updates info: https://gettaurus.org/updates/?version=1.14.2&installID=Docker
+[2020-07-04 12:07:08,042 INFO Engine] Artifacts dir: /tmp/artifacts
+[2020-07-04 12:07:08,042 DEBUG HTTPClient] Making HTTP request GET https://gettaurus.org/updates/?version=1.14.2&installID=Docker
+[2020-07-04 12:07:08,048 DEBUG urllib3.connectionpool] Starting new HTTPS connection (1): gettaurus.org:443
+[2020-07-04 12:07:08,049 DEBUG Engine] New artifact filename: /tmp/artifacts/effective
+[2020-07-04 12:07:08,057 DEBUG Engine.Configuration] Dumping YAML config into /tmp/artifacts/effective.yml
+[2020-07-04 12:07:08,083 DEBUG Engine.Configuration] Dumping JSON config into /tmp/artifacts/effective.json
+[2020-07-04 12:07:08,086 DEBUG root] Closing log handler: /tmp/artifacts/bzt.log
+[2020-07-04 12:07:08,099 DEBUG root] Switched writing logs to /tmp/artifacts/bzt.log
+[2020-07-04 12:07:08,100 DEBUG root] Linting config
+[2020-07-04 12:07:08,102 INFO Engine] Preparing...
+[2020-07-04 12:07:08,103 DEBUG Engine] Module config: consolidator {'class': 'bzt.modules.aggregator.ConsolidatingAggregator'}
+[2020-07-04 12:07:08,105 DEBUG root] Importing module: bzt.modules.aggregator
+[2020-07-04 12:07:08,186 DEBUG root] Loading class: 'ConsolidatingAggregator' from <module 'bzt.modules.aggregator' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/aggregator.py'>
+[2020-07-04 12:07:08,187 DEBUG Engine.consolidator] Buffer scaling setup: percentile 95.0 from [0.0, 50.0, 90.0, 95.0, 99.0, 99.9, 100.0] selected
+[2020-07-04 12:07:08,188 DEBUG Engine] Module config: monitoring {'class': 'bzt.modules.monitoring.Monitoring'}
+[2020-07-04 12:07:08,189 DEBUG root] Importing module: bzt.modules.monitoring
+[2020-07-04 12:07:08,191 DEBUG root] Loading class: 'Monitoring' from <module 'bzt.modules.monitoring' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/monitoring.py'>
+[2020-07-04 12:07:08,192 DEBUG Engine] Module config: local {'class': 'bzt.modules.provisioning.Local'}
+[2020-07-04 12:07:08,193 DEBUG root] Importing module: bzt.modules.provisioning
+[2020-07-04 12:07:08,193 DEBUG root] Loading class: 'Local' from <module 'bzt.modules.provisioning' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/provisioning.py'>
+[2020-07-04 12:07:08,194 ERROR root] Config Error: No 'execution' is configured. Did you forget to pass config files?
+[2020-07-04 12:07:08,196 DEBUG root] TaurusConfigError: No 'execution' is configured. Did you forget to pass config files?
+  File "/usr/local/lib/python3.6/dist-packages/bzt/cli.py", line 258, in perform
+    self.engine.prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/engine.py", line 195, in prepare
+    self.__prepare_provisioning()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/engine.py", line 591, in __prepare_provisioning
+    self.provisioning.prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/modules/provisioning.py", line 70, in prepare
+    super(Local, self).prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/modules.py", line 129, in prepare
+    raise exc
+[2020-07-04 12:07:08,197 INFO Engine] Post-processing...
+[2020-07-04 12:07:08,198 DEBUG Engine.consolidator] Consolidator buffer[0]: dict_keys([])
+[2020-07-04 12:07:08,204 DEBUG Engine.Configuration] Dumping YAML config into /tmp/artifacts/effective.yml
+[2020-07-04 12:07:08,234 DEBUG Engine.Configuration] Dumping JSON config into /tmp/artifacts/effective.json
+[2020-07-04 12:07:08,236 INFO root] Artifacts dir: /tmp/artifacts
+[2020-07-04 12:07:08,244 WARNING root] Done performing with code: 1
+[2020-07-04 12:07:08,245 DEBUG root] Closing log handler: /tmp/artifacts/bzt.log
+[2020-07-04 12:08:30,440 INFO root] Taurus CLI Tool v1.14.2
+[2020-07-04 12:08:30,441 DEBUG root] Command-line options: {'log': '/tmp/artifacts/bzt.log', 'option': None, 'quiet': None, 'verbose': None, 'no_system_configs': None, 'aliases': []}
+[2020-07-04 12:08:30,442 DEBUG root] Python: CPython 3.6.9
+[2020-07-04 12:08:30,443 DEBUG root] OS: uname_result(system='Linux', node='0189ddf1db57', release='4.19.76-linuxkit', version='#1 SMP Thu Oct 17 19:31:58 UTC 2019', machine='x86_64', processor='x86_64')
+[2020-07-04 12:08:30,445 INFO root] Starting with configs: []
+[2020-07-04 12:08:30,446 DEBUG root] Using personal config: /root/.bzt-rc
+[2020-07-04 12:08:30,447 INFO Engine] Configuring...
+[2020-07-04 12:08:30,449 DEBUG Engine] Reading system configs from: /etc/bzt.d
+[2020-07-04 12:08:30,486 DEBUG Engine] Base configs list: ['/usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml', '/etc/bzt.d/50-pbench-enhanced.json', '/etc/bzt.d/90-artifacts-dir.json', '/etc/bzt.d/99-zinstallID.json']
+[2020-07-04 12:08:30,487 DEBUG Engine.Configuration] Configs: ['/usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml', '/etc/bzt.d/50-pbench-enhanced.json', '/etc/bzt.d/90-artifacts-dir.json', '/etc/bzt.d/99-zinstallID.json']
+[2020-07-04 12:08:30,488 DEBUG Engine.Configuration] Reading /usr/local/lib/python3.6/dist-packages/bzt/resources/10-base-config.yml as YAML
+[2020-07-04 12:08:30,520 DEBUG Engine.Configuration] Reading /etc/bzt.d/50-pbench-enhanced.json as YAML
+[2020-07-04 12:08:30,522 DEBUG Engine.Configuration] Reading /etc/bzt.d/90-artifacts-dir.json as YAML
+[2020-07-04 12:08:30,524 DEBUG Engine.Configuration] Reading /etc/bzt.d/99-zinstallID.json as YAML
+[2020-07-04 12:08:30,525 DEBUG Engine] User configs list: ['/root/.bzt-rc']
+[2020-07-04 12:08:30,525 DEBUG Engine.Configuration] Configs: ['/root/.bzt-rc']
+[2020-07-04 12:08:30,526 DEBUG Engine.Configuration] Reading /root/.bzt-rc as YAML
+[2020-07-04 12:08:30,531 DEBUG Engine.Configuration] Configs: ['/root/.bzt-rc']
+[2020-07-04 12:08:30,532 DEBUG Engine.Configuration] Reading /root/.bzt-rc as YAML
+[2020-07-04 12:08:30,538 DEBUG Engine] Requesting updates info: https://gettaurus.org/updates/?version=1.14.2&installID=Docker
+[2020-07-04 12:08:30,538 DEBUG HTTPClient] Making HTTP request GET https://gettaurus.org/updates/?version=1.14.2&installID=Docker
+[2020-07-04 12:08:30,538 INFO Engine] Artifacts dir: /tmp/artifacts
+[2020-07-04 12:08:30,543 DEBUG urllib3.connectionpool] Starting new HTTPS connection (1): gettaurus.org:443
+[2020-07-04 12:08:30,544 DEBUG Engine] New artifact filename: /tmp/artifacts/effective
+[2020-07-04 12:08:30,552 DEBUG Engine.Configuration] Dumping YAML config into /tmp/artifacts/effective.yml
+[2020-07-04 12:08:30,581 DEBUG Engine.Configuration] Dumping JSON config into /tmp/artifacts/effective.json
+[2020-07-04 12:08:30,585 DEBUG root] Closing log handler: /tmp/artifacts/bzt.log
+[2020-07-04 12:08:30,597 DEBUG root] Switched writing logs to /tmp/artifacts/bzt.log
+[2020-07-04 12:08:30,598 DEBUG root] Linting config
+[2020-07-04 12:08:30,600 INFO Engine] Preparing...
+[2020-07-04 12:08:30,601 DEBUG Engine] Module config: consolidator {'class': 'bzt.modules.aggregator.ConsolidatingAggregator'}
+[2020-07-04 12:08:30,602 DEBUG root] Importing module: bzt.modules.aggregator
+[2020-07-04 12:08:30,688 DEBUG root] Loading class: 'ConsolidatingAggregator' from <module 'bzt.modules.aggregator' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/aggregator.py'>
+[2020-07-04 12:08:30,689 DEBUG Engine.consolidator] Buffer scaling setup: percentile 95.0 from [0.0, 50.0, 90.0, 95.0, 99.0, 99.9, 100.0] selected
+[2020-07-04 12:08:30,689 DEBUG Engine] Module config: monitoring {'class': 'bzt.modules.monitoring.Monitoring'}
+[2020-07-04 12:08:30,690 DEBUG root] Importing module: bzt.modules.monitoring
+[2020-07-04 12:08:30,691 DEBUG root] Loading class: 'Monitoring' from <module 'bzt.modules.monitoring' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/monitoring.py'>
+[2020-07-04 12:08:30,692 DEBUG Engine] Module config: local {'class': 'bzt.modules.provisioning.Local'}
+[2020-07-04 12:08:30,693 DEBUG root] Importing module: bzt.modules.provisioning
+[2020-07-04 12:08:30,693 DEBUG root] Loading class: 'Local' from <module 'bzt.modules.provisioning' from '/usr/local/lib/python3.6/dist-packages/bzt/modules/provisioning.py'>
+[2020-07-04 12:08:30,693 ERROR root] Config Error: No 'execution' is configured. Did you forget to pass config files?
+[2020-07-04 12:08:30,695 DEBUG root] TaurusConfigError: No 'execution' is configured. Did you forget to pass config files?
+  File "/usr/local/lib/python3.6/dist-packages/bzt/cli.py", line 258, in perform
+    self.engine.prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/engine.py", line 195, in prepare
+    self.__prepare_provisioning()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/engine.py", line 591, in __prepare_provisioning
+    self.provisioning.prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/modules/provisioning.py", line 70, in prepare
+    super(Local, self).prepare()
+  File "/usr/local/lib/python3.6/dist-packages/bzt/engine/modules.py", line 129, in prepare
+    raise exc
+[2020-07-04 12:08:30,696 INFO Engine] Post-processing...
+[2020-07-04 12:08:30,697 DEBUG Engine.consolidator] Consolidator buffer[0]: dict_keys([])
+[2020-07-04 12:08:30,704 DEBUG Engine.Configuration] Dumping YAML config into /tmp/artifacts/effective.yml
+[2020-07-04 12:08:30,736 DEBUG Engine.Configuration] Dumping JSON config into /tmp/artifacts/effective.json
+[2020-07-04 12:08:30,739 INFO root] Artifacts dir: /tmp/artifacts
+[2020-07-04 12:08:30,746 WARNING root] Done performing with code: 1
+[2020-07-04 12:08:30,747 DEBUG root] Closing log handler: /tmp/artifacts/bzt.log
