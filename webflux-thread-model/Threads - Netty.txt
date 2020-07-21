@@ -1,0 +1,108 @@
+Thread Name						State			Priority	Type
+server                   		WAITING         5       	Normal
+reactor-http-nio-1       		RUNNABLE        5       	Daemon
+reactor-http-nio-2       		RUNNABLE        5       	Daemon
+reactor-http-nio-3       		RUNNABLE        5       	Daemon
+Reference Handler        		RUNNABLE        10      	Daemon
+Signal Dispatcher        		RUNNABLE        9       	Daemon
+Attach Listener          		RUNNABLE        5       	Daemon
+Common-Cleaner           		TIMED_WAITING   8       	Daemon
+Finalizer                		WAITING         8       	Daemon
+JVMCI-native CompilerThread1    RUNNABLE        9       	Daemon
+JVMCI-native CompilerThread0    RUNNABLE        9       	Daemon
+DestroyJavaVM            		RUNNABLE        5       	Normal
+
+#WebClient
+Thread Name						State			Priority	Type
+server                   		WAITING         5       	Normal
+reactor-http-nio-1       		RUNNABLE        5       	Daemon
+reactor-http-nio-2       		RUNNABLE        5       	Daemon
+reactor-http-nio-3       		RUNNABLE        5       	Daemon
+reactor-http-nio-4       		RUNNABLE        5       	Daemon
+reactor-http-nio-5       		RUNNABLE        5      	 	Daemon
+reactor-http-nio-6       		RUNNABLE        5       	Daemon
+reactor-http-nio-7       		RUNNABLE        5       	Daemon
+reactor-http-nio-8       		RUNNABLE        5       	Daemon
+Reference Handler        		RUNNABLE        10      	Daemon
+Signal Dispatcher        		RUNNABLE        9       	Daemon
+Attach Listener          		RUNNABLE        5       	Daemon
+Common-Cleaner           		TIMED_WAITING   8       	Daemon
+Finalizer                		WAITING         8       	Daemon
+JVMCI-native CompilerThread0    RUNNABLE        9       	Daemon
+DestroyJavaVM            		RUNNABLE        5       	Normal
+
+#Reactive Mongo
+Thread Name						State			Priority	Type
+server                   		WAITING         5       	Normal
+reactor-http-nio-1       		RUNNABLE        5       	Daemon
+reactor-http-nio-2       		RUNNABLE        5       	Daemon
+reactor-http-nio-3       		RUNNABLE        5      	 	Daemon
+nioEventLoopGroup-3-1    		RUNNABLE        10      	Normal
+nioEventLoopGroup-3-2    		RUNNABLE        10      	Normal
+cluster-ClusterId{value='5f12e56dfe678b357fd9ee80', description='null'}-localhost:27017          TIMED_WAITING   5       Daemon
+Reference Handler        		RUNNABLE        10      	Daemon
+Signal Dispatcher        		RUNNABLE        9       	Daemon
+Attach Listener          		RUNNABLE        5       	Daemon
+Common-Cleaner           		TIMED_WAITING   8       	Daemon
+Finalizer                		WAITING         8       	Daemon
+JVMCI-native CompilerThread0    RUNNABLE        9       	Daemon
+DestroyJavaVM            		RUNNABLE        5       	Normal
+
+#Reactive Kafka
+Thread Name						State			Priority	Type
+server                   		WAITING         5       	Normal
+reactor-http-nio-1       		RUNNABLE        5       	Daemon
+reactor-http-nio-2       		RUNNABLE        5       	Daemon
+reactor-http-nio-3       		RUNNABLE        5       	Daemon
+nioEventLoopGroup-3-1    		RUNNABLE        10      	Normal
+kafka-producer-network-thread | producer-1       RUNNABLE        5       Daemon
+single-1                 		WAITING         5       	Daemon
+reactive-kafka-my-group-1       BLOCKED         5       	Daemon
+parallel-1               		TIMED_WAITING   5       	Daemon
+parallel-2               		WAITING         5       	Daemon
+Reference Handler        		RUNNABLE        10      	Daemon
+Signal Dispatcher        		RUNNABLE        9       	Daemon
+Attach Listener          		RUNNABLE        5       	Daemon
+Common-Cleaner           		TIMED_WAITING   8       	Daemon
+Finalizer                		WAITING         8       	Daemon
+JVMCI-native CompilerThread0    RUNNABLE        9       	Daemon
+DestroyJavaVM            		RUNNABLE        5       	Normal
+
+#WebClient with Scheduler
+Thread Name						State			Priority	Type
+server                   		WAITING         5       	Normal
+reactor-http-nio-1       		RUNNABLE        5       	Daemon
+reactor-http-nio-2       		RUNNABLE        5       	Daemon
+reactor-http-nio-3       		RUNNABLE        5       	Daemon
+reactor-http-nio-4       		RUNNABLE        5       	Daemon
+reactor-http-nio-5       		RUNNABLE        5       	Daemon
+reactor-http-nio-6       		RUNNABLE        5       	Daemon
+reactor-http-nio-7       		RUNNABLE        5       	Daemon
+reactor-http-nio-8       		RUNNABLE        5       	Daemon
+nioEventLoopGroup-3-1    		RUNNABLE        10      	Normal
+boundedElastic-evictor-1        TIMED_WAITING   5       	Daemon
+MyThreadGroup-1          		RUNNABLE        5       	Daemon
+Reference Handler        		RUNNABLE        10      	Daemon
+Signal Dispatcher        		RUNNABLE        9       	Daemon
+Attach Listener          		RUNNABLE        5       	Daemon
+Common-Cleaner           		TIMED_WAITING   8       	Daemon
+Finalizer                		WAITING         8       	Daemon
+JVMCI-native CompilerThread0    RUNNABLE        9       	Daemon
+DestroyJavaVM            		RUNNABLE        5       	Normal
+
+#RxJava with Scheduler
+Thread Name						State			Priority	Type
+server                   		WAITING         5       	Normal
+reactor-http-nio-1       		RUNNABLE        5       	Daemon
+reactor-http-nio-2       		RUNNABLE        5       	Daemon
+reactor-http-nio-3       		RUNNABLE        5       	Daemon
+nioEventLoopGroup-3-1    		RUNNABLE        10      	Normal
+RxCachedWorkerPoolEvictor-1     TIMED_WAITING   5       	Daemon
+RxSchedulerPurge-1       		TIMED_WAITING   5       	Daemon
+Reference Handler        		RUNNABLE        10      	Daemon
+Signal Dispatcher        		RUNNABLE        9       	Daemon
+Attach Listener          		RUNNABLE        5       	Daemon
+Common-Cleaner           		TIMED_WAITING   8       	Daemon
+Finalizer                		WAITING         8       	Daemon
+JVMCI-native CompilerThread0    RUNNABLE        9       	Daemon
+DestroyJavaVM            		RUNNABLE        5       	Normal

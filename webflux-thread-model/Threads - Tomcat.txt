@@ -1,0 +1,62 @@
+Thread Name						State			Priority	Type
+container-0              		TIMED_WAITING   5       	Normal
+http-nio-8080-exec-1     		RUNNABLE        5       	Daemon
+http-nio-8080-exec-2     		WAITING         5       	Daemon
+http-nio-8080-exec-3     		WAITING         5       	Daemon
+http-nio-8080-exec-4     		WAITING         5       	Daemon
+http-nio-8080-exec-5     		WAITING         5       	Daemon
+http-nio-8080-exec-6     		WAITING         5       	Daemon
+http-nio-8080-exec-7     		WAITING         5       	Daemon
+http-nio-8080-exec-8     		WAITING         5       	Daemon
+http-nio-8080-exec-9     		WAITING         5       	Daemon
+http-nio-8080-exec-10    		WAITING         5       	Daemon
+http-nio-8080-ClientPoller      RUNNABLE        5       	Daemon
+http-nio-8080-Acceptor   		RUNNABLE        5       	Daemon
+http-nio-8080-BlockPoller       RUNNABLE        5       	Daemon
+Catalina-utility-1       		TIMED_WAITING   1       	Normal
+Catalina-utility-2       		WAITING         1       	Normal
+Reference Handler        		RUNNABLE        10      	Daemon
+Signal Dispatcher        		RUNNABLE        9       	Daemon
+Attach Listener          		RUNNABLE        5       	Daemon
+Common-Cleaner           		TIMED_WAITING   8       	Daemon
+Finalizer                		WAITING         8       	Daemon
+JVMCI-native CompilerThread0    RUNNABLE        9       	Daemon
+JVMCI-native CompilerThread1    RUNNABLE        9       	Daemon
+DestroyJavaVM            		RUNNABLE        5       	Normal
+
+#Reactive Mongo
+Thread Name						State			Priority	Type
+container-0              		TIMED_WAITING   5       	Normal
+http-nio-8080-exec-1     		RUNNABLE        5       	Daemon
+http-nio-8080-exec-2     		WAITING         5       	Daemon
+http-nio-8080-exec-3     		WAITING         5       	Daemon
+http-nio-8080-exec-4     		WAITING         5       	Daemon
+http-nio-8080-exec-5     		WAITING         5       	Daemon
+http-nio-8080-exec-6     		WAITING         5       	Daemon
+http-nio-8080-exec-7     		WAITING         5       	Daemon
+http-nio-8080-exec-8     		WAITING         5       	Daemon
+http-nio-8080-exec-9     		WAITING         5       	Daemon
+http-nio-8080-exec-10    		WAITING         5       	Daemon
+http-nio-8080-ClientPoller      RUNNABLE        5       	Daemon
+http-nio-8080-Acceptor   		RUNNABLE        5       	Daemon
+http-nio-8080-BlockPoller       RUNNABLE        5       	Daemon
+Thread-138               		TIMED_WAITING   5       	Daemon
+Thread-134               		RUNNABLE        5       	Daemon
+Thread-133               		RUNNABLE        5       	Daemon
+Thread-132               		RUNNABLE        5       	Daemon
+Thread-129               		RUNNABLE        5       	Daemon
+Thread-130               		RUNNABLE        5       	Daemon
+Thread-135               		RUNNABLE        5       	Daemon
+Thread-137               		RUNNABLE        5       	Daemon
+Thread-131               		RUNNABLE        5       	Daemon
+Thread-136               		RUNNABLE        5       	Daemon
+cluster-ClusterId{value='5f12e74cf12f3a4f0c69cf6a', description='null'}-localhost:27017          TIMED_WAITING   5       Daemon
+Catalina-utility-1       		TIMED_WAITING   1       	Normal
+Catalina-utility-2       		WAITING         1       	Normal
+Reference Handler        		RUNNABLE        10      	Daemon
+Signal Dispatcher        		RUNNABLE        9       	Daemon
+Attach Listener          		RUNNABLE        5      	 	Daemon
+Common-Cleaner           		TIMED_WAITING   8       	Daemon
+Finalizer                		WAITING         8       	Daemon
+JVMCI-native CompilerThread0    RUNNABLE        9       	Daemon
+DestroyJavaVM            		RUNNABLE        5       	Normal
