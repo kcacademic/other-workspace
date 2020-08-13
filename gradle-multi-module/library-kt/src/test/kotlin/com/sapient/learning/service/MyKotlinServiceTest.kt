@@ -13,9 +13,9 @@ class MyServiceTest {
     private val myKotlinService: MyKotlinService? = null
 
     //@Test
-    //fun contextLoads() {
-    //    Assertions.assertThat(myKotlinService!!.message()).isNotNull
-    //}
+    fun contextLoads() {
+        Assertions.assertThat(myKotlinService!!.message()).isNotNull()
+    }
 
     @SpringBootApplication
     internal class TestConfiguration

@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication(scanBasePackages = "com.sapient.learning")
 @RestController
-public class DemoApplication {
+public class Application {
 
 	private final MyKotlinService myKotlinService;
 
-	public DemoApplication(MyKotlinService myKotlinService) {
+	public Application(MyKotlinService myKotlinService) {
 		this.myKotlinService = myKotlinService;
 	}
 
@@ -22,6 +22,6 @@ public class DemoApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }
