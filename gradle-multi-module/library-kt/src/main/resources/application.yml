@@ -1,0 +1,7 @@
+activemq:
+  brokers:
+    url: tcp://localhost:61616
+    username:
+    password:
+queue:
+  payments: payments

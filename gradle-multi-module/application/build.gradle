@@ -1,0 +1,29 @@
+plugins {
+	id 'java-library'
+	id 'org.springframework.boot' version "${springBoot}"
+	id 'io.spring.dependency-management' version "${dependencyManagement}"
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	compile project(":library-kt")
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+test {
+	useJUnitPlatform()
+}
+
+bootJar {
+	enabled = true
+}
+
