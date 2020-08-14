@@ -1,8 +1,6 @@
 package com.sapient.learning.resource;
 
 import com.sapient.learning.domain.Payment;
-//import com.sapient.learning.handler.DefaultErrorHandler;
-import com.sapient.learning.handler.DefaultErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +25,6 @@ public class MyResource {
 
     @PostMapping("/message")
     public ResponseEntity<Payment> send(@RequestBody Payment payment) {
-        DefaultErrorHandler defaultErrorHandler = new DefaultErrorHandler();
         System.out.println("Brokers: " + brokerUrl);
         payment.initialize();
         jmsTemplate.convertAndSend(destination, payment);

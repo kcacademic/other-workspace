@@ -1,0 +1,7 @@
+activemq:
+  brokers:
+    url: vm://localhost?broker.persistent=false
+    username:
+    password:
+queue:
+  payments: payments

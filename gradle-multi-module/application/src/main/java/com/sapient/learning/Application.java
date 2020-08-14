@@ -1,4 +1,4 @@
-package com.sapient.learning.application;
+package com.sapient.learning;
 
 import com.sapient.learning.service.MyKotlinService;
 import org.springframework.boot.SpringApplication;

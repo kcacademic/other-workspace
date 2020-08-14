@@ -1,4 +1,4 @@
-package com.sapient.learning.application;
+package com.sapient.learning;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
