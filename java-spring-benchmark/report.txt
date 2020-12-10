@@ -1,0 +1,204 @@
+[
+    {
+        "jmhVersion" : "1.26",
+        "benchmark" : "com.sapient.benchmark.spring.config.ValidatorChainBenchmarkTests.getFromContextBenchmark",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 0,
+        "jvm" : "C:\\Program Files\\Java\\jdk-11.0.6\\bin\\java.exe",
+        "jvmArgs" : [
+            "-server"
+        ],
+        "jdkVersion" : "11.0.6",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "11.0.6+8-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "10 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "10 s",
+        "measurementBatchSize" : 1,
+        "primaryMetric" : {
+            "score" : 0.2439481175107745,
+            "scoreError" : 0.1864236652006839,
+            "scoreConfidence" : [
+                0.057524452310090596,
+                0.4303717827114584
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.23431482870497966,
+                "50.0" : 0.2428641043456038,
+                "90.0" : 0.2546654194817401,
+                "95.0" : 0.2546654194817401,
+                "99.0" : 0.2546654194817401,
+                "99.9" : 0.2546654194817401,
+                "99.99" : 0.2546654194817401,
+                "99.999" : 0.2546654194817401,
+                "99.9999" : 0.2546654194817401,
+                "100.0" : 0.2546654194817401
+            },
+            "scoreUnit" : "us/op",
+            "rawData" : [
+                [
+                    0.23431482870497966,
+                    0.2546654194817401,
+                    0.2428641043456038
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.26",
+        "benchmark" : "com.sapient.benchmark.spring.config.ValidatorChainBenchmarkTests.getFromFlatMapBenchmark",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 0,
+        "jvm" : "C:\\Program Files\\Java\\jdk-11.0.6\\bin\\java.exe",
+        "jvmArgs" : [
+            "-server"
+        ],
+        "jdkVersion" : "11.0.6",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "11.0.6+8-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "10 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "10 s",
+        "measurementBatchSize" : 1,
+        "primaryMetric" : {
+            "score" : 0.04435526954452736,
+            "scoreError" : 0.031201345114790453,
+            "scoreConfidence" : [
+                0.01315392442973691,
+                0.07555661465931782
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.04322970031456621,
+                "50.0" : 0.04351278587604378,
+                "90.0" : 0.0463233224429721,
+                "95.0" : 0.0463233224429721,
+                "99.0" : 0.0463233224429721,
+                "99.9" : 0.0463233224429721,
+                "99.99" : 0.0463233224429721,
+                "99.999" : 0.0463233224429721,
+                "99.9999" : 0.0463233224429721,
+                "100.0" : 0.0463233224429721
+            },
+            "scoreUnit" : "us/op",
+            "rawData" : [
+                [
+                    0.04322970031456621,
+                    0.0463233224429721,
+                    0.04351278587604378
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.26",
+        "benchmark" : "com.sapient.benchmark.spring.config.ValidatorChainBenchmarkTests.getFromMapBenchmark",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 0,
+        "jvm" : "C:\\Program Files\\Java\\jdk-11.0.6\\bin\\java.exe",
+        "jvmArgs" : [
+            "-server"
+        ],
+        "jdkVersion" : "11.0.6",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "11.0.6+8-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "10 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "10 s",
+        "measurementBatchSize" : 1,
+        "primaryMetric" : {
+            "score" : 0.17261855595375794,
+            "scoreError" : 0.08874409298531089,
+            "scoreConfidence" : [
+                0.08387446296844706,
+                0.2613626489390688
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.16914992775729917,
+                "50.0" : 0.1705268416842404,
+                "90.0" : 0.17817889841973425,
+                "95.0" : 0.17817889841973425,
+                "99.0" : 0.17817889841973425,
+                "99.9" : 0.17817889841973425,
+                "99.99" : 0.17817889841973425,
+                "99.999" : 0.17817889841973425,
+                "99.9999" : 0.17817889841973425,
+                "100.0" : 0.17817889841973425
+            },
+            "scoreUnit" : "us/op",
+            "rawData" : [
+                [
+                    0.16914992775729917,
+                    0.1705268416842404,
+                    0.17817889841973425
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.26",
+        "benchmark" : "com.sapient.benchmark.spring.config.ValidatorChainBenchmarkTests.getFromNestedMapBenchmark",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 0,
+        "jvm" : "C:\\Program Files\\Java\\jdk-11.0.6\\bin\\java.exe",
+        "jvmArgs" : [
+            "-server"
+        ],
+        "jdkVersion" : "11.0.6",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "11.0.6+8-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "10 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "10 s",
+        "measurementBatchSize" : 1,
+        "primaryMetric" : {
+            "score" : 0.02475833886267048,
+            "scoreError" : 6.846315821294989E-4,
+            "scoreConfidence" : [
+                0.024073707280540983,
+                0.02544297044479998
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.024717446687513273,
+                "50.0" : 0.024766369404526565,
+                "90.0" : 0.02479120049597161,
+                "95.0" : 0.02479120049597161,
+                "99.0" : 0.02479120049597161,
+                "99.9" : 0.02479120049597161,
+                "99.99" : 0.02479120049597161,
+                "99.999" : 0.02479120049597161,
+                "99.9999" : 0.02479120049597161,
+                "100.0" : 0.02479120049597161
+            },
+            "scoreUnit" : "us/op",
+            "rawData" : [
+                [
+                    0.024717446687513273,
+                    0.024766369404526565,
+                    0.02479120049597161
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    }
+]
+
+

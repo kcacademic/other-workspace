@@ -1,0 +1,27 @@
+epe:
+  validations:
+    payment-order:
+      stages:
+        default: preliminary, schemeDetermination
+        immediate: initiationDay, executionDay
+        deferred: initiationDay
+        resumed: executionDay
+      validators:
+        none:
+          preliminary: amountEnricher, executionDateEnricher, accountNumberValidator
+          schemeDetermination: sepaCTInstCurrencyValidator, sepaCTInstAmountValidator, sepaCTInstPaymentSchemeEnricher
+        VIO:
+          initiationDay: sepaCTInstInitiationDayEnricher, sepaInitiationDayEnricher
+          executionDay: sepaCTInstExecutionDayEnricher
+        TST:
+          initiationDay: sepaCTInstInitiationDayEnricher, sepaInitiationDayEnricher
+          executionDay: sepaCTInstExecutionDayEnricher
+    payment-confirmation:
+      stages:
+        default: preliminary, accounting
+      validators:
+        VIO:
+          preliminary: statusReportEnricher
+          accounting: confirmDebitEnricher, cancelReservationValidator
+        TST:
+          preliminary: statusReportEnricher
