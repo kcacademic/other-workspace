@@ -3,13 +3,13 @@ package com.sapient.learning.config;
 import org.springframework.context.annotation.Bean;
 
 import io.jaegertracing.Configuration;
-import io.jaegertracing.internal.JaegerTracer;
+import io.opentracing.Tracer;
 
 @org.springframework.context.annotation.Configuration
 public class TracerConfig {
 
 	@Bean
-	public static JaegerTracer getTracer() {
+	public Tracer getTracer() {
 		Configuration.SamplerConfiguration samplerConfig = Configuration.SamplerConfiguration.fromEnv()
 				.withType("const").withParam(1);
 		Configuration.ReporterConfiguration reporterConfig = Configuration.ReporterConfiguration.fromEnv()

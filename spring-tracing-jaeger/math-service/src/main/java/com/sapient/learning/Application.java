@@ -1,22 +1,25 @@
 package com.sapient.learning;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.sapient.learning.client.AdditionService;
-import com.sapient.learning.client.MultiplicationService;
 
-import feign.Feign;
-import feign.Logger;
-import feign.gson.GsonDecoder;
-import feign.gson.GsonEncoder;
-import feign.slf4j.Slf4jLogger;
-import io.jaegertracing.internal.JaegerTracer;
 import io.opentracing.Span;
+import io.opentracing.Tracer;
+import io.opentracing.contrib.okhttp3.TracingInterceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -28,20 +31,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Application {
 
 	@Autowired
-	JaegerTracer tracer;
+	Tracer tracer;
+
+	@Autowired
+	RestTemplate restTemplate;
 
 	@GetMapping("/calculate/{number}")
 	public int calculate(@PathVariable int number) {
 
-		Span additionSpan = tracer.buildSpan("add").start();
 		int x = performAddition(number);
-		additionSpan.finish();
-
-		Span multiplicationSpan = tracer.buildSpan("multiply").start();
 		int y = performMultiplication(x);
-		multiplicationSpan.finish();
 
-		return y;
+		return combine(x, y);
 	}
 
 	public static void main(String[] args) {
@@ -50,11 +51,9 @@ public class Application {
 
 	private int performAddition(int number) {
 
-		Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl("http://localhost:8081/")
-				.addConverterFactory(GsonConverterFactory.create())
-				.client(new OkHttpClient.Builder().build())
-				.build();
+		OkHttpClient tracingClient = TracingInterceptor.addTracing(new OkHttpClient.Builder(), tracer);
+		Retrofit retrofit = new Retrofit.Builder().baseUrl("http://localhost:8081/")
+				.addConverterFactory(GsonConverterFactory.create()).client(tracingClient).build();
 
 		AdditionService service = retrofit.create(AdditionService.class);
 		Call<Integer> callSync = service.add(number);
@@ -72,16 +71,26 @@ public class Application {
 
 	private int performMultiplication(int number) {
 
-		MultiplicationService service = Feign.builder()
-				.encoder(new GsonEncoder())
-				.decoder(new GsonDecoder())
-				.logger(new Slf4jLogger(MultiplicationService.class))
-				.logLevel(Logger.Level.FULL)
-				.target(MultiplicationService.class, "http://localhost:8082/");
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-		Integer x = service.multiply(number);
+		int x = restTemplate.exchange("http://localhost:8082/multiply/" + number, HttpMethod.GET, entity, Integer.class)
+				.getBody();
 
 		return x;
+	}
+
+	private int combine(int num1, int num2) {
+		Span span = tracer.buildSpan("combine").start();
+		int x = num1 + num2;
+		span.finish();
+		return x;
+	}
+
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
 	}
 
 }
