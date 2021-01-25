@@ -1,0 +1,6 @@
+allprojects {
+
+}
+subprojects {
+
+}

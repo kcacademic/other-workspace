@@ -1,0 +1,38 @@
+payments:
+  statemachine:
+    machines[0]:
+      id: default
+      domainObject: com.soprabanking.payments.domain.PaymentObject
+      allStates: CREATED, VERIFIED, FAILED, PROCESSED
+      allEvents: RECEIVE, VALIDATE, PROCESS
+      rootState: CREATED
+      transitions[0]:
+        id: 1
+        initialState: CREATED
+        event: VALIDATE
+        finalState:
+          default: VERIFIED
+          error: FAILED
+        action: defaultAction
+      transitions[1]:
+        id: 2
+        initialState: FAILED
+        event: AUTOMATIC
+        finalState:
+          default: ARCHIVED
+          error: FAILED
+        action: eventAction
+      transitions[2]:
+        id: 3
+        initialState: ARCHIVED
+        event: AUTOMATIC
+        finalState:
+          default: PURGED
+          error: FAILED
+        action: eventAction
+  validation:
+    validators[0]:
+      domainObject: com.soprabanking.payments.domain.PaymentObject
+      stages[0]:
+        transition: 1
+        controls: executionDayControl, amountControl

@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.coc.payments</groupId>
-	<artifactId>payment-integ</artifactId>
+	<artifactId>payment-integration</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>payment-integ</name>
+	<name>payment-integration</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
