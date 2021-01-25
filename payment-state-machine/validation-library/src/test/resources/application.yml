@@ -1,7 +1,7 @@
 payments:
   validation:
     validators[0]:
-      domainObject: com.soprabanking.payments.domain.TestDomain
+      domainObject: com.sapient.payments.domain.TestDomain
       stages[0]:
         transition: 1
         controls: testControl

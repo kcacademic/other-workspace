@@ -2,7 +2,7 @@ payments:
   statemachine:
     machines[0]:
       id: default
-      domainObject: com.soprabanking.payments.domain.PaymentObject
+      domainObject: com.sapient.payments.domain.PaymentObject
       allStates: CREATED, VERIFIED, FAILED, PROCESSED
       allEvents: RECEIVE, VALIDATE, PROCESS
       rootState: CREATED
@@ -32,7 +32,7 @@ payments:
         action: eventAction
   validation:
     validators[0]:
-      domainObject: com.soprabanking.payments.domain.PaymentObject
+      domainObject: com.sapient.payments.domain.PaymentObject
       stages[0]:
         transition: 1
         controls: executionDayControl, amountControl

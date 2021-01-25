@@ -2,7 +2,7 @@ payments:
   statemachine:
     machines[0]:
       id: default
-      domainObject: com.soprabanking.payments.domain.TestDomain
+      domainObject: com.sapient.payments.domain.TestDomain
       allStates: CREATED, VERIFIED, FAILED, PROCESSED
       allEvents: RECEIVE, VALIDATE, PROCESS
       rootState: CREATED
@@ -24,7 +24,7 @@ payments:
         action:
     machines[1]:
       id: default
-      domainObject: com.soprabanking.payments.domain.MyDomain
+      domainObject: com.sapient.payments.domain.MyDomain
       allStates: CREATED, VERIFIED, FAILED, PROCESSED
       allEvents: RECEIVE, VALIDATE, PROCESS
       rootState: CREATED
