@@ -20,14 +20,14 @@ class DefaultValidationStrategy<T : BaseValidatable> : ValidationStrategy<T> {
                     val messageList: List<Message<T>> = it
                             .filter { f -> Message::class.java.isInstance(f) }
                             .map { f -> f as Message<T> }
-                    messageList.forEach { m -> m.function.accept(validatable) }
+                    messageList.forEach { m -> m.function.invoke(validatable) }
                     println(messageList)
                     messageList.filter { m -> m.messageType == MessageType.ERROR }
                             .firstOrNull { throw RuntimeException("Errors occurred in validation: $messageList") }
                 }
                 .doOnNext {
                     it.filter { f -> Data::class.java.isInstance(f) }
-                            .forEach { d -> d.function.accept(validatable) }
+                            .forEach { d -> d.function.invoke(validatable) }
                 }
                 .then(Mono.just(validatable))
     }

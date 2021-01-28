@@ -10,6 +10,7 @@ plugins {
 dependencies {
 	api("io.projectreactor.addons:reactor-extra:3.4.2")
 	api("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.30-M1")
 	api(project(":state-machine-library"))
 	api(project(":validation-library"))
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {

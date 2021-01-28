@@ -14,8 +14,8 @@ class TestControl : Control<TestDomain> {
     override fun validate(data: TestDomain): Flux<Feedback<TestDomain>> {
 
         return Flux.just(
-                Data<TestDomain>(function = Consumer { it.testData = "Hello World!" }),
-                Message<TestDomain>(function = Consumer { }, messageType = MessageType.INFO)
+                Data<TestDomain> { t -> t.testData = "Hello World!" },
+                Message<TestDomain>(function = { }, messageType = MessageType.INFO)
         );
     }
 
