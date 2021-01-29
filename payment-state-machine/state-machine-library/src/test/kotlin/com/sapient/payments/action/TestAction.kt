@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono
 class TestAction : Action<TestDomain> {
 
     override fun perform(data: TestDomain, transition: Transition<TestDomain>): Mono<TestDomain> {
-        return Mono.just(data).doOnNext{ println("TestAction for: $data")}
+        return Mono.just(data).flatMap { println("TestAction for: $data"); Mono.just(data) }.flatMap { Mono.empty<TestDomain>() }
     }
 
 }

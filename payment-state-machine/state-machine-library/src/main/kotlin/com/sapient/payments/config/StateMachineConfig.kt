@@ -25,5 +25,5 @@ data class Transition(
         var initialState: String = "",
         var finalState: MutableMap<String, String> = mutableMapOf(),
         var event: String = "",
-        var action: String = ""
+        var actions: MutableList<String> = mutableListOf()
 )

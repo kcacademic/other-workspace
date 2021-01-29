@@ -13,7 +13,7 @@ payments:
         finalState:
           default: VERIFIED
           error: FAILED
-        action: testAction
+        actions: testAction
       transitions[1]:
         id: 2
         initialState: VERIFIED
@@ -21,7 +21,7 @@ payments:
         finalState:
           default: DISPATCHED
           error: FAILED
-        action:
+        actions:
     machines[1]:
       id: default
       domainObject: com.sapient.payments.domain.MyDomain
@@ -35,4 +35,4 @@ payments:
         finalState:
           default: VERIFIED
           error: FAILED
-        action:
+        actions:

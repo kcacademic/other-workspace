@@ -21,6 +21,7 @@ public abstract class BaseAction implements Action<PaymentObject> {
     PaymentEventProducer paymentEventProducer;
 
     Mono<PaymentObject> validate(PaymentObject paymentObject, Transition<PaymentObject> transition) {
+
         return Mono.just(paymentObject)
                 .flatMap(payment -> {
                     return validationFactory.<PaymentObject>getValidators(

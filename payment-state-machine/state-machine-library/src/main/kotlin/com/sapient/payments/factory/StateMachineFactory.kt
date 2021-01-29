@@ -12,7 +12,9 @@ import javax.annotation.PostConstruct
 
 
 @Component
-class StateMachineFactory(val stateMachineConfig: StateMachineConfig, val applicationContext: AbstractApplicationContext) {
+class StateMachineFactory(
+        val stateMachineConfig: StateMachineConfig,
+        val applicationContext: AbstractApplicationContext) {
 
     val stateMachines: MutableMap<String, StateMachine<*>> = mutableMapOf()
 
@@ -23,15 +25,15 @@ class StateMachineFactory(val stateMachineConfig: StateMachineConfig, val applic
             val stateMachine: StateMachine<T> = StateMachine()
             val transitions: MutableList<Transition<T>> = mutableListOf()
             for (transition in machine.transitions) {
-                val action: Action<T>? =
-                        if (transition.action.isNotEmpty())
-                            applicationContext.getBean(transition.action) as Action<T> else null// Handle case where action is null
+                val actions: MutableList<Action<T>> = mutableListOf()
+                for (action in transition.actions)
+                    actions.add(applicationContext.getBean(action) as Action<T>)
                 transitions.add(Transition(
                         transition.id,
                         transition.initialState,
                         transition.finalState,
                         transition.event,
-                        action))
+                        actions))
             }
             stateMachine.transitions = transitions
             stateMachine.rootState = machine.rootState

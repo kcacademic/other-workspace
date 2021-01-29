@@ -12,7 +12,9 @@ import javax.annotation.PostConstruct
 
 
 @Component
-class ValidationFactory(val validationConfig: ValidationConfig, val applicationContext: AbstractApplicationContext) {
+class ValidationFactory(
+        val validationConfig: ValidationConfig,
+        val applicationContext: AbstractApplicationContext) {
 
     val controlsByDomainAndTransition: MutableMap<String, List<Control<out BaseValidatable>>> = mutableMapOf()
 

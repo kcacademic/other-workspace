@@ -2,6 +2,7 @@ package com.sapient.payments.statemachine
 
 import com.sapient.payments.domain.BaseStateful
 import com.sapient.payments.domain.Transition
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 open class StateMachine<T : BaseStateful> {
@@ -13,6 +14,7 @@ open class StateMachine<T : BaseStateful> {
     lateinit var transitions: MutableList<Transition<T>>
 
     fun handle(data: T, event: String): Mono<T> {
+
         return Mono.just(transitions
                 .filter { (_, initialState) -> initialState == data.state }
                 .first { (_, _, _, event1) -> event1 == event })
@@ -23,16 +25,16 @@ open class StateMachine<T : BaseStateful> {
 
     private fun handleTransition(data: T, transition: Transition<T>): Mono<T> {
 
-        return Mono.just(transition)
-                .flatMap { tr: Transition<T> ->
-                    val start: Mono<T>? = if (tr.action != null) tr.action?.perform(data, tr) else Mono.just(data)
-                    start?.map {
-                        it.state = tr.finalState["default"].toString()
-                        it
-                    }?.onErrorResume {
-                        data.state = tr.finalState["error"].toString()
-                        Mono.just(data)
-                    }
+        return Flux.fromIterable(transition.actions)
+                .flatMap { it.perform(data, transition) }
+                .collectList()
+                .map {
+                    data.state = transition.finalState["default"].toString()
+                    data
+                }
+                .onErrorResume {
+                    data.state = transition.finalState["error"].toString()
+                    Mono.just(data)
                 }
     }
 

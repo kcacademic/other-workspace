@@ -21,7 +21,6 @@ class DefaultValidationStrategy<T : BaseValidatable> : ValidationStrategy<T> {
                             .filter { f -> Message::class.java.isInstance(f) }
                             .map { f -> f as Message<T> }
                     messageList.forEach { m -> m.function.invoke(validatable) }
-                    println(messageList)
                     messageList.filter { m -> m.messageType == MessageType.ERROR }
                             .firstOrNull { throw RuntimeException("Errors occurred in validation: $messageList") }
                 }

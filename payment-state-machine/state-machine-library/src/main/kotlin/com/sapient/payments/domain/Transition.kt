@@ -7,5 +7,5 @@ data class Transition <T: BaseStateful>(
         var initialState: String,
         var finalState: Map<String, String>,
         var event: String,
-        var action: Action<T>?
+        var actions: List<Action<T>>
 )

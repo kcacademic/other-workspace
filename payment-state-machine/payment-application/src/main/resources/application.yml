@@ -13,7 +13,7 @@ payments:
         finalState:
           default: VERIFIED
           error: FAILED
-        action: defaultAction
+        actions: validationAction, eventAction
       transitions[1]:
         id: 2
         initialState: FAILED
@@ -21,7 +21,7 @@ payments:
         finalState:
           default: ARCHIVED
           error: FAILED
-        action: eventAction
+        actions: eventAction
       transitions[2]:
         id: 3
         initialState: ARCHIVED
@@ -29,7 +29,7 @@ payments:
         finalState:
           default: PURGED
           error: FAILED
-        action: eventAction
+        actions: eventAction
   validation:
     validators[0]:
       domainObject: com.sapient.payments.domain.PaymentObject
