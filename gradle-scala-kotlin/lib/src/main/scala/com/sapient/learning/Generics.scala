@@ -12,7 +12,7 @@ class Banana extends Fruit
 
 class Apple extends Fruit
 
-class Generics {
+object Generics {
 
   def main(args: Array[String]): Unit = {
     //val myInvariantGarden: InvariantGarden[Fruit] = new InvariantGarden[Banana] // Illegal statement

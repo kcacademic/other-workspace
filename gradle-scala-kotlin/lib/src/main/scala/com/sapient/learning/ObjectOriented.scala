@@ -48,7 +48,7 @@ object Logger {
   def info(message: String): Unit = println(s"INFO: $message")
 }
 
-object Inheritance {
+object ObjectOriented {
   def main(args: Array[String]): Unit = {
     val myCar = new Car("Ford", "1986")
     Logger.info(myCar.description)
