@@ -29,8 +29,6 @@ class Bus(insured: Insured) : Vehicle(), Insured by insured {
     }
 }
 
-val insured = Insured({ println("Renewing") })
-
 object Logger {
     fun info(message: String) {
         println("INFO: $message")
@@ -65,11 +63,11 @@ fun Bike.start() {
     Logger.info("Starting")
 }
 
-class Car(val make: String, val model: String) : Vehicle() {
+class Car(make: String, model: String) : Vehicle() {
     private val description = "($make, $model)"
 
     constructor(make: String) : this(make, "Unknown") {
-        print(description)
+        println(description)
     }
 
     override fun accelerate() {}
@@ -79,11 +77,20 @@ class Car(val make: String, val model: String) : Vehicle() {
 
 fun main() {
 
-    val car: Car = Car("Ford")
+    val insured = Insured { println("Renewing") }
+    insured.renew()
 
-    val bike: Bike = Bike()
+    val car = Car("Ford")
+    car.accelerate()
+
+    val bike = Bike()
     bike.start()
 
-    val bus: Bus = Bus(BaseInsured())
+    val bus = Bus(BaseInsured())
+    bus.accelerate()
+
+    val x: String? = null
+    println(x?.length) // Safe call, will not result into null pointer exception
+    println(x!!.length) // Non-null asserted call, will result into null pointer exception
 
 }

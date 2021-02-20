@@ -15,7 +15,7 @@ trait Insured {
   def renew(): Unit
 }
 
-class Car(var make: String, var model: String) extends Vehicle with Electric with Insured {
+class Taxi(val make: String, val model: String) extends Vehicle with Electric with Insured {
 
   def this(make: String) = {
     this(make, "Unknown")
@@ -24,7 +24,7 @@ class Car(var make: String, var model: String) extends Vehicle with Electric wit
   private val _description = s"($make, $model)"
 
   {
-    import Car._
+    import Taxi._
     log(_description)
   }
 
@@ -40,7 +40,7 @@ class Car(var make: String, var model: String) extends Vehicle with Electric wit
 
 }
 
-object Car {
+object Taxi {
   private def log(message: String): Unit = Logger.info(message)
 }
 
@@ -49,12 +49,22 @@ object Logger {
 }
 
 object ObjectOriented {
+
+  def show(implicit message: String): Unit = {
+    println(message)
+  }
+
   def main(args: Array[String]): Unit = {
-    val myCar = new Car("Ford", "1986")
-    Logger.info(myCar.description)
-    myCar.accelerate()
-    myCar.decelerate()
-    myCar.recharge()
-    myCar.renew()
+    val myTaxi = new Taxi("Ford", "1986")
+    Logger.info(myTaxi.description)
+    myTaxi.accelerate()
+    myTaxi.decelerate()
+    myTaxi.recharge()
+    myTaxi.renew()
+
+    implicit val message:String = "Hello World!"
+    show
+    show("Hi World!")
+
   }
 }
