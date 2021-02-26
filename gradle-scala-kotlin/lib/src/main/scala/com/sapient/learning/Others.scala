@@ -14,13 +14,31 @@ object Others {
   }
 
   abstract class Order
+
   case class MailOrder(name: String, address: String) extends Order
+
   case class WebOrder(name: String, email: String, phone: String) extends Order
 
   def generateResponse(order: Order): String = {
     order match {
       case MailOrder(name, address) => s"Thank you $name, you will receive confirmation through post at: $address"
       case WebOrder(name, email, _) => s"Thank you $name, you will receive confirmation through email at: $email"
+    }
+  }
+
+  def divide(x: Double, y: Double): Double = {
+    if (y == 0) throw IllegalArgumentException
+    x / y
+  }
+
+  def performDivision(x: Double, y: Double) = {
+    try {
+      divide(x, y)
+    } catch {
+      case ex: IllegalArgumentException =>
+        println(ex.getMessage)
+    } finally {
+      println("Performing cleanup")
     }
   }
 
