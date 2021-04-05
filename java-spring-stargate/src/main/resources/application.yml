@@ -1,0 +1,7 @@
+server:
+  port: 9001
+vehicle:
+  registrations: AB-12-CD, AB-12-CE
+stargate:
+  auth-token: 62354bea-5f25-4ec5-806f-97273f4ff83d
+  base-url: http://localhost:8082/v2/namespaces/vehicles/collections/locations

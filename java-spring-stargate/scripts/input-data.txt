@@ -1,0 +1,7 @@
+curl --location --request POST "localhost:8082/v2/schemas/namespaces" --header "X-Cassandra-Token: 4f274764-2654-44f3-ae67-7a52a2b6299b" --header "Content-Type: application/json" --data "{\"name\": \"vehicles\"}"
+
+curl -L -X POST "localhost:8082/v2/namespaces/vehicles/collections/locations" --header "X-Cassandra-Token: 4f274764-2654-44f3-ae67-7a52a2b6299b" --header "Content-Type: application/json" --data "{\"registration\": \"AB-12-CD\", \"latitude\": \"24.34\", \"longitude\": \"34.46\", \"elevation\": \"1234.23\"}"
+
+curl -L -X POST "localhost:8082/v2/namespaces/vehicles/collections/locations" --header "X-Cassandra-Token: 4f274764-2654-44f3-ae67-7a52a2b6299b" --header "Content-Type: application/json" --data "{\"registration\": \"AB-12-CD\", \"latitude\": \"64.34\", \"longitude\": \"44.46\", \"elevation\": \"1234.23\"}"
+
+curl -L -X GET "localhost:8082/v2/namespaces/vehicles/collections/locations?page-size=3&where=\{\"registration\":\{\"$eq\":\"AB-12-CD\"\}\}" --header "X-Cassandra-Token: 4f274764-2654-44f3-ae67-7a52a2b6299b" --header "Content-Type: application/json"

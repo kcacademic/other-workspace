@@ -1,0 +1,19 @@
+docker run --name stargate -p 8080:8080 -p 8081:8081 -p 8082:8082 -p 127.0.0.1:9042:9042 -d -e CLUSTER_NAME=stargate -e CLUSTER_VERSION=3.11 -e DEVELOPER_MODE=true stargateio/stargate-3_11:v1.0.7
+
+curl -L -X POST "http://localhost:8081/v1/auth" -H "Content-Type: application/json" --data-raw "{\"username\": \"cassandra\", \"password\": \"cassandra\"}"
+
+{"authToken":"6fdd9ef5-eaa9-4ca2-9a9b-e7cdd59d1e76"}
+
+curl --location --request POST "localhost:8082/v2/schemas/namespaces" --header "X-Cassandra-Token: 6fdd9ef5-eaa9-4ca2-9a9b-e7cdd59d1e76" --header "Content-Type: application/json" --data "{\"name\": \"myworld\"}"
+
+curl -L -X GET "localhost:8082/v2/schemas/namespaces" --header "X-Cassandra-Token: 6fdd9ef5-eaa9-4ca2-9a9b-e7cdd59d1e76" --header "Content-Type: application/json"
+
+curl --location --request POST "localhost:8082/v2/namespaces/myworld/collections/fitness" --header "X-Cassandra-Token: 6fdd9ef5-eaa9-4ca2-9a9b-e7cdd59d1e76" --header "Content-Type: application/json" --data "{\"id\": \"some-stuff\", \"other\": \"This is nonsensical stuff.\"}"
+
+curl --location --request GET "localhost:8082/v2/namespaces/myworld/collections/fitness?page-size=3" --header "X-Cassandra-Token: 6fdd9ef5-eaa9-4ca2-9a9b-e7cdd59d1e76" --header "Content-Type: application/json"
+
+curl --location --request GET "localhost:8082/v2/namespaces/myworld/collections/fitness/5a966808-e895-47f7-882d-a0e0f801c841?page-size=3" --header "X-Cassandra-Token: 774b8b3d-3b63-4728-b3f9-3728b0ebea76" --header "Content-Type: application/json"
+
+curl -L -X PUT "localhost:8082/v2/namespaces/myworld/collections/fitness/Janet" --header "X-Cassandra-Token: 774b8b3d-3b63-4728-b3f9-3728b0ebea76" --header "Content-Type: application/json" --data "{\"firstname\": \"Janet\", \"lastname\": \"Doe\", \"email\": \"janet.doe@gmail.com\", \"favorite color\": \"grey\"}"
+
+curl -L -X GET "localhost:8082/v2/namespaces/myworld/collections/fitness?where=\{\"firstname\":\{\"$eq\":\"Janet\"\}\}" --header "X-Cassandra-Token: 62354bea-5f25-4ec5-806f-97273f4ff83d" --header "Content-Type: application/json"
