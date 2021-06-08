@@ -9,7 +9,7 @@
 		<version>2.1.7.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.coc.payments</groupId>
+	<groupId>com.kchandrakant.learning</groupId>
 	<artifactId>payment-integration</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>payment-integration</name>

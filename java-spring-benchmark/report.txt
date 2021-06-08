@@ -1,7 +1,7 @@
 [
     {
         "jmhVersion" : "1.26",
-        "benchmark" : "com.sapient.benchmark.spring.config.ValidatorChainBenchmarkTests.getFromContextBenchmark",
+        "benchmark" : "com.kchandrakant.learning.spring.config.ValidatorChainBenchmarkTests.getFromContextBenchmark",
         "mode" : "avgt",
         "threads" : 1,
         "forks" : 0,
@@ -51,7 +51,7 @@
     },
     {
         "jmhVersion" : "1.26",
-        "benchmark" : "com.sapient.benchmark.spring.config.ValidatorChainBenchmarkTests.getFromFlatMapBenchmark",
+        "benchmark" : "com.kchandrakant.learning.spring.config.ValidatorChainBenchmarkTests.getFromFlatMapBenchmark",
         "mode" : "avgt",
         "threads" : 1,
         "forks" : 0,
@@ -101,7 +101,7 @@
     },
     {
         "jmhVersion" : "1.26",
-        "benchmark" : "com.sapient.benchmark.spring.config.ValidatorChainBenchmarkTests.getFromMapBenchmark",
+        "benchmark" : "com.kchandrakant.learning.spring.config.ValidatorChainBenchmarkTests.getFromMapBenchmark",
         "mode" : "avgt",
         "threads" : 1,
         "forks" : 0,
@@ -151,7 +151,7 @@
     },
     {
         "jmhVersion" : "1.26",
-        "benchmark" : "com.sapient.benchmark.spring.config.ValidatorChainBenchmarkTests.getFromNestedMapBenchmark",
+        "benchmark" : "com.kchandrakant.learning.spring.config.ValidatorChainBenchmarkTests.getFromNestedMapBenchmark",
         "mode" : "avgt",
         "threads" : 1,
         "forks" : 0,

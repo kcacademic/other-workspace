@@ -8,7 +8,7 @@
 		<version>2.3.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sapient.learning</groupId>
+	<groupId>com.kchandrakant.learning</groupId>
 	<artifactId>spring-reactive</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-reactive</name>

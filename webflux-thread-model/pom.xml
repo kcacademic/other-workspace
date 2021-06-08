@@ -8,7 +8,7 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sapient.learning</groupId>
+	<groupId>com.kchandrakant.learning</groupId>
 	<artifactId>webflux-thread-model</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>webflux-thread-model</name>

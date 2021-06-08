@@ -1,3 +1,3 @@
-Apps\spark-2.3.1-bin-hadoop2.7\bin\spark-submit.cmd --class com.sapient.learning.counting.WordCountingApp --master local Apps\sts-workspace\java-spark-app\target\java-spark-app-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+Apps\spark-2.3.1-bin-hadoop2.7\bin\spark-submit.cmd --class com.kchandrakant.learning.counting.WordCountingApp --master local Apps\sts-workspace\java-spark-app\target\java-spark-app-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
-Apps\spark-2.3.1-bin-hadoop2.7\bin\spark-submit.cmd --class com.sapient.learning.counting.WordCountingAppWithCheckpoint --master local Apps\sts-workspace\java-spark-app\target\java-spark-app-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+Apps\spark-2.3.1-bin-hadoop2.7\bin\spark-submit.cmd --class com.kchandrakant.learning.counting.WordCountingAppWithCheckpoint --master local Apps\sts-workspace\java-spark-app\target\java-spark-app-0.0.1-SNAPSHOT-jar-with-dependencies.jar
